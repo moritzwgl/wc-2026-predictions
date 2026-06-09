@@ -1,0 +1,1213 @@
+[
+  {
+    "date": "2026-06-11",
+    "home": "Mexico",
+    "away": "South Africa",
+    "city": "Mexico City",
+    "country": "Mexico",
+    "h2h": [
+      {
+        "date": "2010-06-11",
+        "home": "South Africa",
+        "away": "Mexico",
+        "home_score": 1,
+        "away_score": 1
+      },
+      {
+        "date": "2005-07-08",
+        "home": "South Africa",
+        "away": "Mexico",
+        "home_score": 2,
+        "away_score": 1
+      },
+      {
+        "date": "2000-06-07",
+        "home": "Mexico",
+        "away": "South Africa",
+        "home_score": 4,
+        "away_score": 2
+      }
+    ]
+  },
+  {
+    "date": "2026-06-11",
+    "home": "South Korea",
+    "away": "Czech Republic",
+    "city": "Zapopan",
+    "country": "Mexico",
+    "h2h": [
+      {
+        "date": "2016-06-05",
+        "home": "Czech Republic",
+        "away": "South Korea",
+        "home_score": 1,
+        "away_score": 2
+      },
+      {
+        "date": "2001-08-15",
+        "home": "Czech Republic",
+        "away": "South Korea",
+        "home_score": 5,
+        "away_score": 0
+      }
+    ]
+  },
+  {
+    "date": "2026-06-12",
+    "home": "Canada",
+    "away": "Bosnia and Herzegovina",
+    "city": "Toronto",
+    "country": "Canada",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-12",
+    "home": "United States",
+    "away": "Paraguay",
+    "city": "Inglewood",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2025-11-15",
+        "home": "United States",
+        "away": "Paraguay",
+        "home_score": 2,
+        "away_score": 1
+      },
+      {
+        "date": "2018-03-27",
+        "home": "United States",
+        "away": "Paraguay",
+        "home_score": 1,
+        "away_score": 0
+      },
+      {
+        "date": "2016-06-11",
+        "home": "United States",
+        "away": "Paraguay",
+        "home_score": 1,
+        "away_score": 0
+      },
+      {
+        "date": "2011-03-29",
+        "home": "United States",
+        "away": "Paraguay",
+        "home_score": 0,
+        "away_score": 1
+      },
+      {
+        "date": "2007-07-02",
+        "home": "United States",
+        "away": "Paraguay",
+        "home_score": 1,
+        "away_score": 3
+      }
+    ]
+  },
+  {
+    "date": "2026-06-13",
+    "home": "Qatar",
+    "away": "Switzerland",
+    "city": "Santa Clara",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2018-11-14",
+        "home": "Switzerland",
+        "away": "Qatar",
+        "home_score": 0,
+        "away_score": 1
+      }
+    ]
+  },
+  {
+    "date": "2026-06-13",
+    "home": "Brazil",
+    "away": "Morocco",
+    "city": "East Rutherford",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2023-03-25",
+        "home": "Morocco",
+        "away": "Brazil",
+        "home_score": 2,
+        "away_score": 1
+      }
+    ]
+  },
+  {
+    "date": "2026-06-13",
+    "home": "Haiti",
+    "away": "Scotland",
+    "city": "Foxborough",
+    "country": "United States",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-13",
+    "home": "Australia",
+    "away": "Turkey",
+    "city": "Vancouver",
+    "country": "Canada",
+    "h2h": [
+      {
+        "date": "2004-05-24",
+        "home": "Australia",
+        "away": "Turkey",
+        "home_score": 0,
+        "away_score": 1
+      },
+      {
+        "date": "2004-05-21",
+        "home": "Australia",
+        "away": "Turkey",
+        "home_score": 1,
+        "away_score": 3
+      }
+    ]
+  },
+  {
+    "date": "2026-06-14",
+    "home": "Germany",
+    "away": "Curaçao",
+    "city": "Houston",
+    "country": "United States",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-14",
+    "home": "Ivory Coast",
+    "away": "Ecuador",
+    "city": "Philadelphia",
+    "country": "United States",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-14",
+    "home": "Netherlands",
+    "away": "Japan",
+    "city": "Arlington",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2013-11-16",
+        "home": "Netherlands",
+        "away": "Japan",
+        "home_score": 2,
+        "away_score": 2
+      },
+      {
+        "date": "2010-06-19",
+        "home": "Netherlands",
+        "away": "Japan",
+        "home_score": 1,
+        "away_score": 0
+      },
+      {
+        "date": "2009-09-05",
+        "home": "Netherlands",
+        "away": "Japan",
+        "home_score": 3,
+        "away_score": 0
+      }
+    ]
+  },
+  {
+    "date": "2026-06-14",
+    "home": "Sweden",
+    "away": "Tunisia",
+    "city": "Guadalupe",
+    "country": "Mexico",
+    "h2h": [
+      {
+        "date": "2003-02-12",
+        "home": "Tunisia",
+        "away": "Sweden",
+        "home_score": 1,
+        "away_score": 0
+      }
+    ]
+  },
+  {
+    "date": "2026-06-15",
+    "home": "Belgium",
+    "away": "Egypt",
+    "city": "Seattle",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2022-11-18",
+        "home": "Egypt",
+        "away": "Belgium",
+        "home_score": 2,
+        "away_score": 1
+      },
+      {
+        "date": "2018-06-06",
+        "home": "Belgium",
+        "away": "Egypt",
+        "home_score": 3,
+        "away_score": 0
+      },
+      {
+        "date": "2005-02-09",
+        "home": "Egypt",
+        "away": "Belgium",
+        "home_score": 4,
+        "away_score": 0
+      }
+    ]
+  },
+  {
+    "date": "2026-06-15",
+    "home": "Iran",
+    "away": "New Zealand",
+    "city": "Inglewood",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2003-10-12",
+        "home": "Iran",
+        "away": "New Zealand",
+        "home_score": 3,
+        "away_score": 0
+      }
+    ]
+  },
+  {
+    "date": "2026-06-15",
+    "home": "Spain",
+    "away": "Cape Verde",
+    "city": "Atlanta",
+    "country": "United States",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-15",
+    "home": "Saudi Arabia",
+    "away": "Uruguay",
+    "city": "Miami Gardens",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2018-06-20",
+        "home": "Uruguay",
+        "away": "Saudi Arabia",
+        "home_score": 1,
+        "away_score": 0
+      },
+      {
+        "date": "2014-10-10",
+        "home": "Saudi Arabia",
+        "away": "Uruguay",
+        "home_score": 1,
+        "away_score": 1
+      },
+      {
+        "date": "2002-03-27",
+        "home": "Saudi Arabia",
+        "away": "Uruguay",
+        "home_score": 3,
+        "away_score": 2
+      }
+    ]
+  },
+  {
+    "date": "2026-06-16",
+    "home": "France",
+    "away": "Senegal",
+    "city": "East Rutherford",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2002-05-31",
+        "home": "France",
+        "away": "Senegal",
+        "home_score": 0,
+        "away_score": 1
+      }
+    ]
+  },
+  {
+    "date": "2026-06-16",
+    "home": "Iraq",
+    "away": "Norway",
+    "city": "Foxborough",
+    "country": "United States",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-16",
+    "home": "Argentina",
+    "away": "Algeria",
+    "city": "Kansas City",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2007-06-05",
+        "home": "Algeria",
+        "away": "Argentina",
+        "home_score": 3,
+        "away_score": 4
+      }
+    ]
+  },
+  {
+    "date": "2026-06-16",
+    "home": "Austria",
+    "away": "Jordan",
+    "city": "Santa Clara",
+    "country": "United States",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-17",
+    "home": "Portugal",
+    "away": "DR Congo",
+    "city": "Houston",
+    "country": "United States",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-17",
+    "home": "Uzbekistan",
+    "away": "Colombia",
+    "city": "Mexico City",
+    "country": "Mexico",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-17",
+    "home": "England",
+    "away": "Croatia",
+    "city": "Arlington",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2021-06-13",
+        "home": "England",
+        "away": "Croatia",
+        "home_score": 1,
+        "away_score": 0
+      },
+      {
+        "date": "2018-11-18",
+        "home": "England",
+        "away": "Croatia",
+        "home_score": 2,
+        "away_score": 1
+      },
+      {
+        "date": "2018-10-12",
+        "home": "Croatia",
+        "away": "England",
+        "home_score": 0,
+        "away_score": 0
+      },
+      {
+        "date": "2018-07-11",
+        "home": "Croatia",
+        "away": "England",
+        "home_score": 2,
+        "away_score": 1
+      },
+      {
+        "date": "2009-09-09",
+        "home": "England",
+        "away": "Croatia",
+        "home_score": 5,
+        "away_score": 1
+      }
+    ]
+  },
+  {
+    "date": "2026-06-17",
+    "home": "Ghana",
+    "away": "Panama",
+    "city": "Toronto",
+    "country": "Canada",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-18",
+    "home": "Czech Republic",
+    "away": "South Africa",
+    "city": "Atlanta",
+    "country": "United States",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-18",
+    "home": "Mexico",
+    "away": "South Korea",
+    "city": "Zapopan",
+    "country": "Mexico",
+    "h2h": [
+      {
+        "date": "2025-09-09",
+        "home": "Mexico",
+        "away": "South Korea",
+        "home_score": 2,
+        "away_score": 2
+      },
+      {
+        "date": "2020-11-14",
+        "home": "Mexico",
+        "away": "South Korea",
+        "home_score": 3,
+        "away_score": 2
+      },
+      {
+        "date": "2018-06-23",
+        "home": "South Korea",
+        "away": "Mexico",
+        "home_score": 1,
+        "away_score": 2
+      },
+      {
+        "date": "2014-01-29",
+        "home": "Mexico",
+        "away": "South Korea",
+        "home_score": 4,
+        "away_score": 0
+      },
+      {
+        "date": "2006-02-15",
+        "home": "Mexico",
+        "away": "South Korea",
+        "home_score": 0,
+        "away_score": 1
+      }
+    ]
+  },
+  {
+    "date": "2026-06-18",
+    "home": "Switzerland",
+    "away": "Bosnia and Herzegovina",
+    "city": "Inglewood",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2016-03-29",
+        "home": "Switzerland",
+        "away": "Bosnia and Herzegovina",
+        "home_score": 0,
+        "away_score": 2
+      }
+    ]
+  },
+  {
+    "date": "2026-06-18",
+    "home": "Canada",
+    "away": "Qatar",
+    "city": "Vancouver",
+    "country": "Canada",
+    "h2h": [
+      {
+        "date": "2022-09-23",
+        "home": "Canada",
+        "away": "Qatar",
+        "home_score": 2,
+        "away_score": 0
+      }
+    ]
+  },
+  {
+    "date": "2026-06-19",
+    "home": "Scotland",
+    "away": "Morocco",
+    "city": "Foxborough",
+    "country": "United States",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-19",
+    "home": "Brazil",
+    "away": "Haiti",
+    "city": "Philadelphia",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2016-06-08",
+        "home": "Brazil",
+        "away": "Haiti",
+        "home_score": 7,
+        "away_score": 1
+      },
+      {
+        "date": "2004-08-18",
+        "home": "Haiti",
+        "away": "Brazil",
+        "home_score": 0,
+        "away_score": 6
+      }
+    ]
+  },
+  {
+    "date": "2026-06-19",
+    "home": "United States",
+    "away": "Australia",
+    "city": "Seattle",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2025-10-14",
+        "home": "United States",
+        "away": "Australia",
+        "home_score": 2,
+        "away_score": 1
+      },
+      {
+        "date": "2010-06-05",
+        "home": "Australia",
+        "away": "United States",
+        "home_score": 1,
+        "away_score": 3
+      }
+    ]
+  },
+  {
+    "date": "2026-06-19",
+    "home": "Turkey",
+    "away": "Paraguay",
+    "city": "Santa Clara",
+    "country": "United States",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-20",
+    "home": "Germany",
+    "away": "Ivory Coast",
+    "city": "Toronto",
+    "country": "Canada",
+    "h2h": [
+      {
+        "date": "2009-11-18",
+        "home": "Germany",
+        "away": "Ivory Coast",
+        "home_score": 2,
+        "away_score": 2
+      }
+    ]
+  },
+  {
+    "date": "2026-06-20",
+    "home": "Ecuador",
+    "away": "Curaçao",
+    "city": "Kansas City",
+    "country": "United States",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-20",
+    "home": "Netherlands",
+    "away": "Sweden",
+    "city": "Houston",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2017-10-10",
+        "home": "Netherlands",
+        "away": "Sweden",
+        "home_score": 2,
+        "away_score": 0
+      },
+      {
+        "date": "2016-09-06",
+        "home": "Sweden",
+        "away": "Netherlands",
+        "home_score": 1,
+        "away_score": 1
+      },
+      {
+        "date": "2011-10-11",
+        "home": "Sweden",
+        "away": "Netherlands",
+        "home_score": 3,
+        "away_score": 2
+      },
+      {
+        "date": "2010-10-12",
+        "home": "Netherlands",
+        "away": "Sweden",
+        "home_score": 4,
+        "away_score": 1
+      },
+      {
+        "date": "2008-11-19",
+        "home": "Netherlands",
+        "away": "Sweden",
+        "home_score": 3,
+        "away_score": 1
+      }
+    ]
+  },
+  {
+    "date": "2026-06-20",
+    "home": "Tunisia",
+    "away": "Japan",
+    "city": "Guadalupe",
+    "country": "Mexico",
+    "h2h": [
+      {
+        "date": "2022-06-14",
+        "home": "Japan",
+        "away": "Tunisia",
+        "home_score": 0,
+        "away_score": 3
+      },
+      {
+        "date": "2015-03-27",
+        "home": "Japan",
+        "away": "Tunisia",
+        "home_score": 2,
+        "away_score": 0
+      },
+      {
+        "date": "2003-10-08",
+        "home": "Tunisia",
+        "away": "Japan",
+        "home_score": 0,
+        "away_score": 1
+      },
+      {
+        "date": "2002-06-14",
+        "home": "Japan",
+        "away": "Tunisia",
+        "home_score": 2,
+        "away_score": 0
+      }
+    ]
+  },
+  {
+    "date": "2026-06-21",
+    "home": "Belgium",
+    "away": "Iran",
+    "city": "Inglewood",
+    "country": "United States",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-21",
+    "home": "New Zealand",
+    "away": "Egypt",
+    "city": "Vancouver",
+    "country": "Canada",
+    "h2h": [
+      {
+        "date": "2024-03-22",
+        "home": "Egypt",
+        "away": "New Zealand",
+        "home_score": 1,
+        "away_score": 0
+      }
+    ]
+  },
+  {
+    "date": "2026-06-21",
+    "home": "Spain",
+    "away": "Saudi Arabia",
+    "city": "Atlanta",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2012-09-07",
+        "home": "Spain",
+        "away": "Saudi Arabia",
+        "home_score": 5,
+        "away_score": 0
+      },
+      {
+        "date": "2010-05-29",
+        "home": "Spain",
+        "away": "Saudi Arabia",
+        "home_score": 3,
+        "away_score": 2
+      },
+      {
+        "date": "2006-06-23",
+        "home": "Saudi Arabia",
+        "away": "Spain",
+        "home_score": 0,
+        "away_score": 1
+      }
+    ]
+  },
+  {
+    "date": "2026-06-21",
+    "home": "Uruguay",
+    "away": "Cape Verde",
+    "city": "Miami Gardens",
+    "country": "United States",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-22",
+    "home": "France",
+    "away": "Iraq",
+    "city": "Philadelphia",
+    "country": "United States",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-22",
+    "home": "Norway",
+    "away": "Senegal",
+    "city": "East Rutherford",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2006-03-01",
+        "home": "Senegal",
+        "away": "Norway",
+        "home_score": 2,
+        "away_score": 1
+      }
+    ]
+  },
+  {
+    "date": "2026-06-22",
+    "home": "Argentina",
+    "away": "Austria",
+    "city": "Arlington",
+    "country": "United States",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-22",
+    "home": "Jordan",
+    "away": "Algeria",
+    "city": "Santa Clara",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2004-05-30",
+        "home": "Algeria",
+        "away": "Jordan",
+        "home_score": 1,
+        "away_score": 1
+      }
+    ]
+  },
+  {
+    "date": "2026-06-23",
+    "home": "Portugal",
+    "away": "Uzbekistan",
+    "city": "Houston",
+    "country": "United States",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-23",
+    "home": "Colombia",
+    "away": "DR Congo",
+    "city": "Zapopan",
+    "country": "Mexico",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-23",
+    "home": "England",
+    "away": "Ghana",
+    "city": "Foxborough",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2011-03-29",
+        "home": "England",
+        "away": "Ghana",
+        "home_score": 1,
+        "away_score": 1
+      }
+    ]
+  },
+  {
+    "date": "2026-06-23",
+    "home": "Panama",
+    "away": "Croatia",
+    "city": "Toronto",
+    "country": "Canada",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-24",
+    "home": "Mexico",
+    "away": "Czech Republic",
+    "city": "Mexico City",
+    "country": "Mexico",
+    "h2h": [
+      {
+        "date": "2000-02-08",
+        "home": "Mexico",
+        "away": "Czech Republic",
+        "home_score": 1,
+        "away_score": 2
+      }
+    ]
+  },
+  {
+    "date": "2026-06-24",
+    "home": "South Africa",
+    "away": "South Korea",
+    "city": "Guadalupe",
+    "country": "Mexico",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-24",
+    "home": "Canada",
+    "away": "Switzerland",
+    "city": "Vancouver",
+    "country": "Canada",
+    "h2h": [
+      {
+        "date": "2002-05-15",
+        "home": "Switzerland",
+        "away": "Canada",
+        "home_score": 1,
+        "away_score": 3
+      }
+    ]
+  },
+  {
+    "date": "2026-06-24",
+    "home": "Bosnia and Herzegovina",
+    "away": "Qatar",
+    "city": "Seattle",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2010-08-10",
+        "home": "Bosnia and Herzegovina",
+        "away": "Qatar",
+        "home_score": 1,
+        "away_score": 1
+      },
+      {
+        "date": "2000-01-24",
+        "home": "Qatar",
+        "away": "Bosnia and Herzegovina",
+        "home_score": 2,
+        "away_score": 0
+      }
+    ]
+  },
+  {
+    "date": "2026-06-24",
+    "home": "Scotland",
+    "away": "Brazil",
+    "city": "Miami Gardens",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2011-03-27",
+        "home": "Brazil",
+        "away": "Scotland",
+        "home_score": 2,
+        "away_score": 0
+      }
+    ]
+  },
+  {
+    "date": "2026-06-24",
+    "home": "Morocco",
+    "away": "Haiti",
+    "city": "Atlanta",
+    "country": "United States",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-25",
+    "home": "United States",
+    "away": "Turkey",
+    "city": "Inglewood",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2025-06-07",
+        "home": "United States",
+        "away": "Turkey",
+        "home_score": 1,
+        "away_score": 2
+      },
+      {
+        "date": "2014-06-01",
+        "home": "United States",
+        "away": "Turkey",
+        "home_score": 2,
+        "away_score": 1
+      },
+      {
+        "date": "2010-05-29",
+        "home": "United States",
+        "away": "Turkey",
+        "home_score": 2,
+        "away_score": 1
+      },
+      {
+        "date": "2003-06-19",
+        "home": "Turkey",
+        "away": "United States",
+        "home_score": 2,
+        "away_score": 1
+      }
+    ]
+  },
+  {
+    "date": "2026-06-25",
+    "home": "Paraguay",
+    "away": "Australia",
+    "city": "Santa Clara",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2010-10-09",
+        "home": "Australia",
+        "away": "Paraguay",
+        "home_score": 1,
+        "away_score": 0
+      },
+      {
+        "date": "2006-10-07",
+        "home": "Australia",
+        "away": "Paraguay",
+        "home_score": 1,
+        "away_score": 1
+      },
+      {
+        "date": "2000-06-15",
+        "home": "Australia",
+        "away": "Paraguay",
+        "home_score": 2,
+        "away_score": 1
+      },
+      {
+        "date": "2000-06-12",
+        "home": "Australia",
+        "away": "Paraguay",
+        "home_score": 0,
+        "away_score": 0
+      },
+      {
+        "date": "2000-06-09",
+        "home": "Australia",
+        "away": "Paraguay",
+        "home_score": 0,
+        "away_score": 0
+      }
+    ]
+  },
+  {
+    "date": "2026-06-25",
+    "home": "Curaçao",
+    "away": "Ivory Coast",
+    "city": "Philadelphia",
+    "country": "United States",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-25",
+    "home": "Ecuador",
+    "away": "Germany",
+    "city": "East Rutherford",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2013-05-29",
+        "home": "Ecuador",
+        "away": "Germany",
+        "home_score": 2,
+        "away_score": 4
+      },
+      {
+        "date": "2006-06-20",
+        "home": "Germany",
+        "away": "Ecuador",
+        "home_score": 3,
+        "away_score": 0
+      }
+    ]
+  },
+  {
+    "date": "2026-06-25",
+    "home": "Japan",
+    "away": "Sweden",
+    "city": "Arlington",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2002-05-25",
+        "home": "Japan",
+        "away": "Sweden",
+        "home_score": 1,
+        "away_score": 1
+      }
+    ]
+  },
+  {
+    "date": "2026-06-25",
+    "home": "Tunisia",
+    "away": "Netherlands",
+    "city": "Kansas City",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2009-02-11",
+        "home": "Tunisia",
+        "away": "Netherlands",
+        "home_score": 1,
+        "away_score": 1
+      }
+    ]
+  },
+  {
+    "date": "2026-06-26",
+    "home": "Egypt",
+    "away": "Iran",
+    "city": "Seattle",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2000-06-07",
+        "home": "Iran",
+        "away": "Egypt",
+        "home_score": 1,
+        "away_score": 1
+      }
+    ]
+  },
+  {
+    "date": "2026-06-26",
+    "home": "New Zealand",
+    "away": "Belgium",
+    "city": "Vancouver",
+    "country": "Canada",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-26",
+    "home": "Cape Verde",
+    "away": "Saudi Arabia",
+    "city": "Houston",
+    "country": "United States",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-26",
+    "home": "Uruguay",
+    "away": "Spain",
+    "city": "Zapopan",
+    "country": "Mexico",
+    "h2h": [
+      {
+        "date": "2013-06-16",
+        "home": "Spain",
+        "away": "Uruguay",
+        "home_score": 2,
+        "away_score": 1
+      },
+      {
+        "date": "2013-02-06",
+        "home": "Spain",
+        "away": "Uruguay",
+        "home_score": 3,
+        "away_score": 1
+      },
+      {
+        "date": "2005-08-17",
+        "home": "Spain",
+        "away": "Uruguay",
+        "home_score": 2,
+        "away_score": 0
+      }
+    ]
+  },
+  {
+    "date": "2026-06-26",
+    "home": "Norway",
+    "away": "France",
+    "city": "Foxborough",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2014-05-27",
+        "home": "France",
+        "away": "Norway",
+        "home_score": 4,
+        "away_score": 0
+      },
+      {
+        "date": "2010-08-11",
+        "home": "Norway",
+        "away": "France",
+        "home_score": 2,
+        "away_score": 1
+      }
+    ]
+  },
+  {
+    "date": "2026-06-26",
+    "home": "Senegal",
+    "away": "Iraq",
+    "city": "Toronto",
+    "country": "Canada",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-27",
+    "home": "Algeria",
+    "away": "Austria",
+    "city": "Kansas City",
+    "country": "United States",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-27",
+    "home": "Jordan",
+    "away": "Argentina",
+    "city": "Arlington",
+    "country": "United States",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-27",
+    "home": "Colombia",
+    "away": "Portugal",
+    "city": "Miami Gardens",
+    "country": "United States",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-27",
+    "home": "DR Congo",
+    "away": "Uzbekistan",
+    "city": "Atlanta",
+    "country": "United States",
+    "h2h": []
+  },
+  {
+    "date": "2026-06-27",
+    "home": "Panama",
+    "away": "England",
+    "city": "East Rutherford",
+    "country": "United States",
+    "h2h": [
+      {
+        "date": "2018-06-24",
+        "home": "England",
+        "away": "Panama",
+        "home_score": 6,
+        "away_score": 1
+      }
+    ]
+  },
+  {
+    "date": "2026-06-27",
+    "home": "Croatia",
+    "away": "Ghana",
+    "city": "Philadelphia",
+    "country": "United States",
+    "h2h": []
+  }
+]

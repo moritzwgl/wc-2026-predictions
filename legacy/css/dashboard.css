@@ -1,11 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* ══════════════════════════════════════════════════════
+   FIFA World Cup 2026 Dashboard – Custom Styles
+   (Tailwind v4 handles utilities; this file handles
+    things Tailwind can't express inline)
+══════════════════════════════════════════════════════ */
 
+/* ── Base ──────────────────────────────────────────── */
 body {
   background-color: #080c14;
 }
 
+/* ── Noise texture overlay ─────────────────────────── */
 body::after {
   content: '';
   position: fixed;
@@ -16,6 +20,7 @@ body::after {
   opacity: 0.3;
 }
 
+/* ── Gold gradient text ────────────────────────────── */
 .text-gold-gradient {
   background: linear-gradient(135deg, #f0c96e 0%, #d4a853 45%, #a87832 100%);
   -webkit-background-clip: text;
@@ -23,6 +28,7 @@ body::after {
   background-clip: text;
 }
 
+/* ── Header radial glow ────────────────────────────── */
 .header-glow::before {
   content: '';
   position: absolute;
@@ -35,6 +41,7 @@ body::after {
   background: radial-gradient(ellipse, rgba(212, 168, 83, 0.14) 0%, transparent 65%);
 }
 
+/* ── Left accent bar on match cards ───────────────── */
 .card-accent {
   position: relative;
   overflow: hidden;
@@ -57,6 +64,7 @@ body::after {
   opacity: 1;
 }
 
+/* ── Win-probability bar ───────────────────────────── */
 .prob-bar {
   display: flex;
   height: 5px;
@@ -65,12 +73,23 @@ body::after {
   width: 100%;
 }
 
+/* ── Expandable match detail panel ────────────────── */
+.match-detail {
+  display: none;
+}
+
+.match-card.expanded .match-detail {
+  display: grid;
+}
+
+/* ── Sticky controls glass effect ─────────────────── */
 .glass {
   background: rgba(8, 12, 20, 0.88);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 }
 
+/* ── Staggered fade-in for day groups ─────────────── */
 .day-group:nth-child(1) { animation-delay: 0.05s; }
 .day-group:nth-child(2) { animation-delay: 0.10s; }
 .day-group:nth-child(3) { animation-delay: 0.15s; }

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIFA World Cup 2026 · Predictions &amp; Bets</title>
+  <meta name="description"
+    content="Datenbasierte Vorhersagen und Wettempfehlungen für alle Spiele der FIFA Weltmeisterschaft 2026">
+
+  <!-- Tailwind CSS v4 -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Bebas Neue"', 'sans-serif'],
+            sans: ['"Geist"', 'sans-serif'],
+            mono: ['"Geist Mono"', 'monospace'],
+          },
+          colors: {
+            gold: { DEFAULT: '#d4a853', light: '#f0c96e', dark: '#a87832' },
+            pitch: { 950: '#060a10', 900: '#080c14', 800: '#0e1520', 700: '#131d2d', 600: '#1a2640' },
+          },
+          animation: {
+            'pulse-dot': 'pulse-dot 2s ease-in-out infinite',
+            'fade-up': 'fade-up 0.4s ease both',
+          },
+          keyframes: {
+            'pulse-dot': {
+              '0%,100%': { opacity: '1', transform: 'scale(1)' },
+              '50%': { opacity: '.4', transform: 'scale(1.4)' },
+            },
+            'fade-up': {
+              from: { opacity: '0', transform: 'translateY(16px)' },
+              to: { opacity: '1', transform: 'translateY(0)' },
+            },
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;600&display=swap"
+    rel="stylesheet">
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body class="font-sans text-amber-50 min-h-screen overflow-x-hidden relative">
+
+  <!-- ══════════════════════════════════════════════
+       HEADER
+  ══════════════════════════════════════════════ -->
+  <header class="relative header-glow text-center px-10 pt-16 pb-12 border-b border-gold/10 overflow-hidden"
+    style="background: linear-gradient(180deg, rgba(212,168,83,0.05) 0%, transparent 100%)">
+
+    <!-- Live badge -->
+    <div class="inline-flex items-center gap-2 bg-gold/10 border border-gold/30 rounded-full px-4 py-1 mb-6">
+      <span class="w-1.5 h-1.5 rounded-full bg-gold animate-pulse-dot"></span>
+      <span class="text-gold text-[10px] font-semibold tracking-[0.18em] uppercase">
+        Live Predictions · Datenbasiert
+      </span>
+    </div>
+
+    <h1 class="font-display text-gold-gradient leading-none mb-3"
+      style="font-size: clamp(56px,9vw,100px); letter-spacing:0.04em">
+      World Cup<br>2026
+    </h1>
+
+    <p class="text-slate-400 text-base md:text-lg tracking-widest uppercase">
+      Gruppenphase · Predictions &amp; Wettempfehlungen · 48 Teams
+    </p>
+  </header>
+
+  <!-- ══════════════════════════════════════════════
+       STATS BAR
+  ══════════════════════════════════════════════ -->
+  <div id="statsbar" class="flex justify-center border-b border-gold/10" style="background:#0e1520"></div>
+
+  <!-- ══════════════════════════════════════════════
+       STICKY FILTER / SEARCH CONTROLS
+  ══════════════════════════════════════════════ -->
+  <div class="glass sticky top-0 z-50 border-b border-gold/10 px-6 md:px-10 py-3.5 flex flex-wrap items-center gap-2.5">
+    <span class="text-sm md:text-base text-slate-500 uppercase tracking-widest mr-1">Filter:</span>
+
+    <button id="btn-all" onclick="setFilter('all')"
+      class="filter-btn active px-4 py-2 rounded-md text-sm md:text-base font-medium tracking-wide border border-gold/15 text-slate-400 transition-all duration-200 cursor-pointer">
+      Alle Spiele
+    </button>
+    <button id="btn-top" onclick="setFilter('top')"
+      class="filter-btn px-4 py-2 rounded-md text-sm md:text-base font-medium tracking-wide border border-gold/15 text-slate-400 transition-all duration-200 cursor-pointer">
+      ⭐ Top Picks
+    </button>
+    <button id="btn-over" onclick="setFilter('over')"
+      class="filter-btn px-4 py-2 rounded-md text-sm md:text-base font-medium tracking-wide border border-gold/15 text-slate-400 transition-all duration-200 cursor-pointer">
+      ⚽ Over 2.5
+    </button>
+    <button id="btn-fav" onclick="setFilter('fav')"
+      class="filter-btn px-4 py-2 rounded-md text-sm md:text-base font-medium tracking-wide border border-gold/15 text-slate-400 transition-all duration-200 cursor-pointer">
+      🏆 Favorit ≥70%
+    </button>
+
+    <div class="w-px h-6 bg-gold/10 mx-1"></div>
+
+    <input id="search-input" type="text" placeholder="Team suchen …" oninput="onSearch(this.value)" class="bg-pitch-700 border border-gold/15 rounded-md px-4 py-2 text-base md:text-lg text-amber-50
+                  placeholder-slate-500 outline-none focus:border-gold/50 transition-colors w-48 md:w-64 font-sans">
+
+    <span id="count-label" class="ml-auto text-sm md:text-base text-slate-500 font-mono"></span>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       BATCH BETTING RECOMMENDATIONS PANEL
+  ══════════════════════════════════════════════ -->
+  <div id="batch-panel" class="mx-6 md:mx-10 mt-7 rounded-xl border border-gold/20 p-6 relative overflow-hidden"
+    style="background: linear-gradient(135deg, rgba(212,168,83,0.07) 0%, rgba(26,40,64,0.55) 100%)">
+    <!-- Ghost watermark text (kept by renderBatch() when rebuilding the panel) -->
+    <span
+      class="font-display absolute top-3 right-5 text-6xl text-gold/[0.05] pointer-events-none tracking-widest select-none">BATCH</span>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       MATCH LIST
+  ══════════════════════════════════════════════ -->
+  <main id="match-list" class="px-6 md:px-10 py-8 pb-20 flex flex-col gap-0"></main>
+
+  <!-- ══════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════ -->
+  <footer class="border-t border-gold/10 py-6 px-10 text-center text-sm md:text-base text-slate-500 font-mono"
+    style="background:#0e1520">
+    Vorhersagen basieren auf historischen Ergebnissen aus
+    <span class="text-gold">football.db</span> (1872–2026) ·
+    Poisson-Modell · Kein Aufruf zur Teilnahme am Glücksspiel
+  </footer>
+
+  <!-- Application logic -->
+  <script src="js/dashboard.js"></script>
+
+</body>
+
+</html>
