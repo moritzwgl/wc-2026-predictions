@@ -118,7 +118,7 @@ export function getBets(
       name: "Über 1.5 Tore",
       val: `${Math.round(pred.over15 * 100)}%`,
       prob: pred.over15,
-      conf: pred.over15 >= 0.90 ? "high" : "medium",
+      conf: pred.over15 >= 0.80 ? "high" : "medium",
       icon: "⚽",
       isTopPick: pred.over15 >= 0.85,
     });

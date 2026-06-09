@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { ProcessedGame } from "./Dashboard";
 import ConfBadge from "./ConfBadge";
+import FlagIcon from "./FlagIcon";
 
 interface RecentMatchRowProps {
   date: string;
@@ -95,7 +96,9 @@ export default function MatchCard({ game, oddsFormat = "percent" }: { game: Proc
 
           {/* Home */}
           <div className="px-5 py-5 flex items-center gap-3">
-            <span className="text-4xl md:text-5xl leading-none shrink-0">{game.homeFlag}</span>
+            <div className="w-10 h-10 md:w-12 md:h-12 shrink-0 flex items-center justify-center">
+              <FlagIcon emoji={game.homeFlag} className="w-full h-full drop-shadow-sm" />
+            </div>
             <div className="flex flex-col gap-0.5 min-w-0">
               <span className="font-semibold text-base md:text-lg text-amber-50 tracking-tight truncate">
                 {game.home}
@@ -140,7 +143,9 @@ export default function MatchCard({ game, oddsFormat = "percent" }: { game: Proc
                 WR {Math.round(game.awayStats.win_rate * 100)}% · xG {pred.lambdaA}
               </span>
             </div>
-            <span className="text-4xl md:text-5xl leading-none shrink-0">{game.awayFlag}</span>
+            <div className="w-10 h-10 md:w-12 md:h-12 shrink-0 flex items-center justify-center">
+              <FlagIcon emoji={game.awayFlag} className="w-full h-full drop-shadow-sm" />
+            </div>
           </div>
         </div>
 

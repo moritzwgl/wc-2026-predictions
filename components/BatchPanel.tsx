@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { ProcessedGame } from "./Dashboard";
 import ConfBadge from "./ConfBadge";
+import FlagIcon from "./FlagIcon";
 
 interface Props {
   games: ProcessedGame[];
@@ -64,8 +65,8 @@ export default function BatchPanel({ games, oddsFormat }: Props) {
               >
                 <span className="text-xl md:text-2xl shrink-0">{b.icon}</span>
                 <div className="flex-1 min-w-0 leading-snug">
-                  <div className="text-sm text-slate-500 truncate">
-                    {b.homeFlag} {b.home} — {b.awayFlag} {b.away}
+                  <div className="text-sm text-slate-500 truncate flex items-center gap-1.5">
+                    <span className="w-4 h-4 inline-flex"><FlagIcon emoji={b.homeFlag} className="w-full h-full" /></span> {b.home} — <span className="w-4 h-4 inline-flex"><FlagIcon emoji={b.awayFlag} className="w-full h-full" /></span> {b.away}
                   </div>
                   <div className="text-base md:text-lg font-semibold text-amber-100">
                     {b.name}: <strong className="text-gold-light">{b.prob ? formatProb(b.prob) : b.val}</strong>
