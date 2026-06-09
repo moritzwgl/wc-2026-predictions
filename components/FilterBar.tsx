@@ -6,8 +6,10 @@ interface Props {
   currentFilter: FilterType;
   searchTerm: string;
   matchCount: number;
+  oddsFormat: "percent" | "decimal";
   onFilterChange: (f: FilterType) => void;
   onSearch: (v: string) => void;
+  onOddsFormatChange: (f: "percent" | "decimal") => void;
 }
 
 const FILTERS: { id: FilterType; label: string; tooltip: string }[] = [
@@ -21,8 +23,10 @@ export default function FilterBar({
   currentFilter,
   searchTerm,
   matchCount,
+  oddsFormat,
   onFilterChange,
   onSearch,
+  onOddsFormatChange,
 }: Props) {
   return (
     <div className="glass sticky top-0 z-20 border-b border-gold/10">
@@ -49,13 +53,22 @@ export default function FilterBar({
           })}
         </div>
 
-        <input
-          type="text"
-          placeholder="Team suchen …"
-          value={searchTerm}
-          onChange={(e) => onSearch(e.target.value)}
-          className="ml-auto bg-white/5 border border-gold/15 rounded-lg px-4 py-2 text-sm text-slate-300 placeholder-slate-600 focus:outline-none focus:border-gold/40 w-48"
-        />
+        <div className="ml-auto flex items-center gap-3">
+          <button
+            onClick={() => onOddsFormatChange(oddsFormat === "percent" ? "decimal" : "percent")}
+            className="bg-white/5 border border-gold/15 rounded-lg px-3 py-2 text-sm text-slate-300 hover:border-gold/40 transition-colors whitespace-nowrap"
+            title="Darstellung zwischen Prozent und Quoten umschalten"
+          >
+            {oddsFormat === "percent" ? "Format: %" : "Format: Quoten"}
+          </button>
+          <input
+            type="text"
+            placeholder="Team suchen …"
+            value={searchTerm}
+            onChange={(e) => onSearch(e.target.value)}
+            className="bg-white/5 border border-gold/15 rounded-lg px-4 py-2 text-sm text-slate-300 placeholder-slate-600 focus:outline-none focus:border-gold/40 w-48"
+          />
+        </div>
 
         <span className="text-sm text-slate-500 font-mono whitespace-nowrap">
           {matchCount} Spiele

@@ -6,9 +6,19 @@ import ConfBadge from "./ConfBadge";
 
 interface Props {
   games: ProcessedGame[];
+  oddsFormat: "percent" | "decimal";
 }
 
-export default function BatchPanel({ games }: Props) {
+export default function BatchPanel({ games, oddsFormat }: Props) {
+  const formatProb = (prob: number, decimalsForPercent = 0) => {
+    if (oddsFormat === "decimal") {
+      if (prob <= 0) return "—";
+      return (1 / prob).toFixed(2);
+    } else {
+      if (decimalsForPercent === 0) return `${Math.round(prob * 100)}%`;
+      return `${(prob * 100).toFixed(decimalsForPercent)}%`;
+    }
+  };
   const [open, setOpen] = useState(false);
 
   const topBets = games
@@ -21,7 +31,7 @@ export default function BatchPanel({ games }: Props) {
     .slice(0, 12);
 
   return (
-    <div className="mx-auto max-w-7xl px-4 border-b border-gold/10">
+    <div className="mx-auto max-w-7xl px-4 border-b border-gold/10" id="best-bets">
       <button
         onClick={() => setOpen((v) => !v)}
         className="w-full flex items-center justify-between py-5 cursor-pointer group"
@@ -58,7 +68,7 @@ export default function BatchPanel({ games }: Props) {
                     {b.homeFlag} {b.home} — {b.awayFlag} {b.away}
                   </div>
                   <div className="text-base md:text-lg font-semibold text-amber-100">
-                    {b.name}: <strong className="text-gold-light">{b.val}</strong>
+                    {b.name}: <strong className="text-gold-light">{b.prob ? formatProb(b.prob) : b.val}</strong>
                   </div>
                 </div>
                 <ConfBadge conf={b.conf} />

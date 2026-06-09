@@ -64,9 +64,19 @@ const statRow = (label: string, value: string | number, extraClass = "") => (
   </div>
 );
 
-export default function MatchCard({ game }: { game: ProcessedGame }) {
+export default function MatchCard({ game, oddsFormat = "percent" }: { game: ProcessedGame; oddsFormat?: "percent" | "decimal" }) {
   const [expanded, setExpanded] = useState(false);
   const { pred, bets } = game;
+  const formatProb = (prob: number, decimalsForPercent = 0) => {
+    if (oddsFormat === "decimal") {
+      if (prob <= 0) return "—";
+      return (1 / prob).toFixed(2);
+    } else {
+      if (decimalsForPercent === 0) return `${Math.round(prob * 100)}%`;
+      return `${(prob * 100).toFixed(decimalsForPercent)}%`;
+    }
+  };
+
   const top = pred.topScores[0];
   const hwP = Math.round(pred.homeWin * 100);
   const dwP = Math.round(pred.draw * 100);
@@ -146,7 +156,7 @@ export default function MatchCard({ game }: { game: ProcessedGame }) {
               key={i}
               className={`text-xs px-2.5 py-1 rounded border ${BET_COLORS[i]} whitespace-nowrap`}
             >
-              {b.icon} {b.name}: {b.val}
+              {b.icon} {b.name}: {b.prob ? formatProb(b.prob) : b.val}
             </div>
           ))}
           <div className="ml-auto text-slate-600 text-xs shrink-0 select-none">
@@ -166,10 +176,10 @@ export default function MatchCard({ game }: { game: ProcessedGame }) {
           <div>
             <h4 className="text-xs uppercase tracking-[0.14em] text-gold mb-4">📊 Statistiken</h4>
             {statRow("Gesamt xG", pred.totalGoals, "text-gold-light")}
-            {statRow("Über 1.5 Tore", `${Math.round(pred.over15 * 100)}%`)}
-            {statRow("Über 2.5 Tore", `${Math.round(pred.over25 * 100)}%`, pred.over25 >= 0.6 ? "text-emerald-400" : "")}
-            {statRow("Über 3.5 Tore", `${Math.round(pred.over35 * 100)}%`)}
-            {statRow("Beide treffen", `${Math.round(pred.btts * 100)}%`, pred.btts >= 0.6 ? "text-emerald-400" : "")}
+            {statRow("Über 1.5 Tore", formatProb(pred.over15))}
+            {statRow("Über 2.5 Tore", formatProb(pred.over25), pred.over25 >= 0.6 ? "text-emerald-400" : "")}
+            {statRow("Über 3.5 Tore", formatProb(pred.over35))}
+            {statRow("Beide treffen", formatProb(pred.btts), pred.btts >= 0.6 ? "text-emerald-400" : "")}
             {statRow("xG Heim", pred.lambdaH)}
             {statRow("xG Gast", pred.lambdaA)}
             <div className="mt-4">
@@ -190,7 +200,7 @@ export default function MatchCard({ game }: { game: ProcessedGame }) {
                   >
                     {s.h}:{s.a}
                     <br />
-                    <span className="opacity-70">{(s.p * 100).toFixed(1)}%</span>
+                    <span className="opacity-70">{formatProb(s.p, 1)}</span>
                   </div>
                 ))}
               </div>
@@ -205,7 +215,7 @@ export default function MatchCard({ game }: { game: ProcessedGame }) {
                 <div key={i} className="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-black/25">
                   <span className="text-base">{b.icon}</span>
                   <span className="text-sm text-slate-400 flex-1">{b.name}</span>
-                  <span className="font-mono text-sm font-semibold text-amber-100 mx-2">{b.val}</span>
+                  <span className="font-mono text-sm font-semibold text-amber-100 mx-2">{b.prob ? formatProb(b.prob) : b.val}</span>
                   <ConfBadge conf={b.conf} />
                 </div>
               ))}

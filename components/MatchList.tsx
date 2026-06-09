@@ -12,9 +12,10 @@ function formatDate(d: string): string {
 
 interface Props {
   games: ProcessedGame[];
+  oddsFormat: "percent" | "decimal";
 }
 
-export default function MatchList({ games }: Props) {
+export default function MatchList({ games, oddsFormat }: Props) {
   if (games.length === 0) {
     return (
       <div className="text-center py-20 text-slate-500 text-lg md:text-xl">
@@ -46,7 +47,7 @@ export default function MatchList({ games }: Props) {
             </span>
           </div>
           {gs.map((g) => (
-            <MatchCard key={g.id} game={g} />
+            <MatchCard key={g.id} game={g} oddsFormat={oddsFormat} />
           ))}
         </div>
       ))}

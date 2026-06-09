@@ -27,6 +27,7 @@ export interface Prediction {
 export interface Bet {
   name: string;
   val: string;
+  prob?: number;
   conf: "high" | "medium" | "low";
   icon: string;
   isTopPick: boolean;
@@ -106,6 +107,7 @@ export function getBets(
     bets.push({
       name: `Sieg ${fav}`,
       val: `${Math.round(favP * 100)}%`,
+      prob: favP,
       conf: favP >= 0.7 ? "high" : "medium",
       icon: "🏆",
       isTopPick: favP >= 0.65,
@@ -115,6 +117,7 @@ export function getBets(
     bets.push({
       name: "Über 1.5 Tore",
       val: `${Math.round(pred.over15 * 100)}%`,
+      prob: pred.over15,
       conf: pred.over15 >= 0.90 ? "high" : "medium",
       icon: "⚽",
       isTopPick: pred.over15 >= 0.85,
@@ -124,6 +127,7 @@ export function getBets(
     bets.push({
       name: "Über 2.5 Tore",
       val: `${Math.round(pred.over25 * 100)}%`,
+      prob: pred.over25,
       conf: pred.over25 >= 0.7 ? "high" : "medium",
       icon: "⚽",
       isTopPick: pred.over25 >= 0.65,
@@ -133,6 +137,7 @@ export function getBets(
     bets.push({
       name: "Beide Teams treffen",
       val: `${Math.round(pred.btts * 100)}%`,
+      prob: pred.btts,
       conf: pred.btts >= 0.68 ? "high" : "medium",
       icon: "🎯",
       isTopPick: pred.btts >= 0.6,
@@ -142,6 +147,7 @@ export function getBets(
     bets.push({
       name: "Über 3.5 Tore",
       val: `${Math.round(pred.over35 * 100)}%`,
+      prob: pred.over35,
       conf: "medium",
       icon: "🔥",
       isTopPick: false,
@@ -151,6 +157,7 @@ export function getBets(
     bets.push({
       name: "Unentschieden",
       val: `${Math.round(pred.draw * 100)}%`,
+      prob: pred.draw,
       conf: "medium",
       icon: "🤝",
       isTopPick: false,

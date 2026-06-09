@@ -35,6 +35,8 @@ export default function Dashboard({ games }: Props) {
   const [currentFilter, setCurrentFilter] = useState<FilterType>("all");
   const [searchTerm, setSearchTerm] = useState("");
 
+  const [oddsFormat, setOddsFormat] = useState<"percent" | "decimal">("percent");
+
   const filtered = useMemo(() => {
     return games.filter((g) => {
       const matchesSearch =
@@ -66,10 +68,12 @@ export default function Dashboard({ games }: Props) {
         matchCount={filtered.length}
         onFilterChange={setCurrentFilter}
         onSearch={setSearchTerm}
+        oddsFormat={oddsFormat}
+        onOddsFormatChange={setOddsFormat}
       />
-      <BatchPanel games={games} />
+      <BatchPanel games={games} oddsFormat={oddsFormat} />
       <main className="max-w-7xl mx-auto px-4 py-8">
-        <MatchList games={filtered} />
+        <MatchList games={filtered} oddsFormat={oddsFormat} />
       </main>
       <footer className="text-center py-8 text-slate-600 text-sm border-t border-gold/10">
         FIFA World Cup 2026 · Datenbasierte Vorhersagen · Poisson-Modell
