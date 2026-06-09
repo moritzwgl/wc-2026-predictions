@@ -1,6 +1,6 @@
 "use client";
 
-export type FilterType = "all" | "top" | "over" | "fav";
+export type FilterType = "all" | "over15" | "over" | "fav";
 
 interface Props {
   currentFilter: FilterType;
@@ -10,11 +10,11 @@ interface Props {
   onSearch: (v: string) => void;
 }
 
-const FILTERS: { id: FilterType; label: string }[] = [
-  { id: "all", label: "Alle Spiele" },
-  { id: "top", label: "⭐ Top Picks" },
-  { id: "over", label: "⚽ Over 2.5" },
-  { id: "fav", label: "🏆 Favorit ≥70%" },
+const FILTERS: { id: FilterType; label: string; tooltip: string }[] = [
+  { id: "all", label: "Alle Spiele", tooltip: "Alle 72 Gruppenspiele anzeigen" },
+  { id: "over15", label: "⚽ Over 1.5", tooltip: "Spiele mit ≥80% Wahrscheinlichkeit für mindestens 2 Tore" },
+  { id: "over", label: "⚽ Over 2.5", tooltip: "Spiele mit ≥58% Wahrscheinlichkeit für mindestens 3 Tore" },
+  { id: "fav", label: "🏆 Favorit ≥70%", tooltip: "Spiele mit einem klaren Favoriten (Siegchance ≥70%)" },
 ];
 
 export default function FilterBar({
@@ -34,6 +34,7 @@ export default function FilterBar({
               <button
                 key={f.id}
                 onClick={() => onFilterChange(f.id)}
+                title={f.tooltip}
                 className="filter-btn px-4 py-2 rounded-lg border text-sm font-medium transition-all"
                 style={{
                   background: active ? "#d4a853" : "transparent",

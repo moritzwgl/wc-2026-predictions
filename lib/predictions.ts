@@ -111,6 +111,15 @@ export function getBets(
       isTopPick: favP >= 0.65,
     });
 
+  if (pred.over15 >= 0.80)
+    bets.push({
+      name: "Über 1.5 Tore",
+      val: `${Math.round(pred.over15 * 100)}%`,
+      conf: pred.over15 >= 0.90 ? "high" : "medium",
+      icon: "⚽",
+      isTopPick: pred.over15 >= 0.85,
+    });
+
   if (pred.over25 >= 0.58)
     bets.push({
       name: "Über 2.5 Tore",
@@ -152,7 +161,7 @@ export function getBets(
     val: `${top.h}:${top.a}`,
     conf: top.p >= 0.12 ? "high" : top.p >= 0.08 ? "medium" : "low",
     icon: "📊",
-    isTopPick: top.p >= 0.1,
+    isTopPick: false,
   });
 
   return bets;

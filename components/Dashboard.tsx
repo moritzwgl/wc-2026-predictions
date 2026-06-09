@@ -43,7 +43,7 @@ export default function Dashboard({ games }: Props) {
         g.away.toLowerCase().includes(searchTerm.toLowerCase());
 
       let matchesFilter = true;
-      if (currentFilter === "top") matchesFilter = g.bets.some((b) => b.isTopPick);
+      if (currentFilter === "over15") matchesFilter = g.pred.over15 >= 0.80;
       if (currentFilter === "over") matchesFilter = g.pred.over25 >= 0.58;
       if (currentFilter === "fav") matchesFilter = Math.max(g.pred.homeWin, g.pred.awayWin) >= 0.7;
 

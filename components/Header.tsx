@@ -4,7 +4,7 @@ export default function Header() {
       <div className="relative z-10">
         <div className="inline-flex items-center gap-2 text-xs font-mono tracking-[0.2em] uppercase text-slate-500 mb-6 border border-gold/20 rounded-full px-4 py-1.5">
           <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse-dot" />
-          Live · Gruppenphase 2026
+          Live · Gruppenphase WM 2026
         </div>
 
         <h1

@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import type { ProcessedGame } from "./Dashboard";
 import ConfBadge from "./ConfBadge";
 
@@ -6,6 +9,8 @@ interface Props {
 }
 
 export default function BatchPanel({ games }: Props) {
+  const [open, setOpen] = useState(false);
+
   const topBets = games
     .flatMap((g) =>
       g.bets
@@ -16,43 +21,52 @@ export default function BatchPanel({ games }: Props) {
     .slice(0, 12);
 
   return (
-    <div
-      className="relative mx-auto max-w-7xl px-4 py-10 border-b border-gold/10 overflow-hidden"
-    >
-      <span
-        className="absolute right-6 top-1/2 -translate-y-1/2 font-display text-[160px] leading-none select-none pointer-events-none"
-        style={{ color: "rgba(212,168,83,0.03)" }}
+    <div className="mx-auto max-w-7xl px-4 border-b border-gold/10">
+      <button
+        onClick={() => setOpen((v) => !v)}
+        className="w-full flex items-center justify-between py-5 cursor-pointer group"
       >
-        BATCH
-      </span>
+        <div className="font-display text-gold text-xl md:text-2xl tracking-widest flex items-center gap-2.5">
+          <span>⚡</span> Die besten {topBets.length} Tipps
+        </div>
+        <span className="text-slate-600 text-sm group-hover:text-slate-400 transition-colors">
+          {open ? "▲" : "▼"}
+        </span>
+      </button>
 
-      <div className="font-display text-gold text-2xl md:text-3xl tracking-widest mb-6 flex items-center gap-2.5">
-        <span>⚡</span> Batch-Empfehlungen · Top {topBets.length} Tipps
-      </div>
-
-      <div
-        className="grid gap-2.5"
-        style={{ gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))" }}
-      >
-        {topBets.map((b, i) => (
-          <div
-            key={i}
-            className="flex items-center gap-3 md:gap-4 rounded-lg border border-gold/[0.12] px-4 py-3 hover:border-gold/30 transition-all"
-            style={{ background: "rgba(6,10,16,0.6)" }}
+      {open && (
+        <div className="relative overflow-hidden pb-8">
+          <span
+            className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[160px] leading-none select-none pointer-events-none"
+            style={{ color: "rgba(212,168,83,0.03)" }}
           >
-            <span className="text-xl md:text-2xl shrink-0">{b.icon}</span>
-            <div className="flex-1 min-w-0 leading-snug">
-              <div className="text-sm text-slate-500 truncate">
-                {b.homeFlag} {b.home} — {b.awayFlag} {b.away}
+            BATCH
+          </span>
+          <div
+            className="grid gap-2.5"
+            style={{ gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))" }}
+          >
+            {topBets.map((b, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-3 md:gap-4 rounded-lg border border-gold/[0.12] px-4 py-3 hover:border-gold/30 transition-all"
+                style={{ background: "rgba(6,10,16,0.6)" }}
+              >
+                <span className="text-xl md:text-2xl shrink-0">{b.icon}</span>
+                <div className="flex-1 min-w-0 leading-snug">
+                  <div className="text-sm text-slate-500 truncate">
+                    {b.homeFlag} {b.home} — {b.awayFlag} {b.away}
+                  </div>
+                  <div className="text-base md:text-lg font-semibold text-amber-100">
+                    {b.name}: <strong className="text-gold-light">{b.val}</strong>
+                  </div>
+                </div>
+                <ConfBadge conf={b.conf} />
               </div>
-              <div className="text-base md:text-lg font-semibold text-amber-100">
-                {b.name}: <strong className="text-gold-light">{b.val}</strong>
-              </div>
-            </div>
-            <ConfBadge conf={b.conf} />
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
