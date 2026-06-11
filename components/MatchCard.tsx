@@ -161,7 +161,7 @@ export default function MatchCard({ game, oddsFormat = "percent" }: { game: Proc
               key={i}
               className={`text-xs px-2.5 py-1 rounded border ${BET_COLORS[i]} whitespace-nowrap`}
             >
-              {b.icon} {b.name}: {b.prob ? formatProb(b.prob) : b.val}
+              {b.icon} {b.name}: <span className="font-semibold">{b.val}</span>
             </div>
           ))}
           <div className="ml-auto text-slate-600 text-xs shrink-0 select-none">
@@ -220,7 +220,7 @@ export default function MatchCard({ game, oddsFormat = "percent" }: { game: Proc
                 <div key={i} className="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-black/25">
                   <span className="text-base">{b.icon}</span>
                   <span className="text-sm text-slate-400 flex-1">{b.name}</span>
-                  <span className="font-mono text-sm font-semibold text-amber-100 mx-2">{b.prob ? formatProb(b.prob) : b.val}</span>
+                  <span className="font-mono text-sm font-semibold text-amber-100 mx-2">{b.val}</span>
                   <ConfBadge conf={b.conf} />
                 </div>
               ))}

@@ -40,6 +40,27 @@ function poissonPMF(k: number, lambda: number): number {
   return p;
 }
 
+/**
+ * Calculates a weighted form score for a team based on their last N matches.
+ * Newer matches receive exponentially higher weight.
+ * Returns a value between -1 (terrible form) and +1 (perfect form).
+ */
+function calcFormFactor(recentMatches: { result: "W" | "D" | "L" }[]): number {
+  if (recentMatches.length === 0) return 0;
+  let weightedSum = 0;
+  let totalWeight = 0;
+  // Most recent match has highest weight (index 0 = most recent)
+  for (let i = 0; i < recentMatches.length; i++) {
+    const weight = Math.pow(0.75, i); // exponential decay: newest = 1.0, next = 0.75, etc.
+    const score =
+      recentMatches[i].result === "W" ? 1 :
+        recentMatches[i].result === "D" ? 0 : -1;
+    weightedSum += score * weight;
+    totalWeight += weight;
+  }
+  return totalWeight > 0 ? weightedSum / totalWeight : 0;
+}
+
 export function predictMatch(
   home: string,
   away: string,
@@ -55,12 +76,23 @@ export function predictMatch(
   let lambdaH = (h.avg_scored / GLOBAL_AVG) * (a.avg_conceded / GLOBAL_AVG) * GLOBAL_AVG * HOME_ADVANTAGE;
   let lambdaA = (a.avg_scored / GLOBAL_AVG) * (h.avg_conceded / GLOBAL_AVG) * GLOBAL_AVG;
 
+  // --- FIFA Ranking factor (stronger weight: ±40%, scaled by 1000 pts gap) ---
   const homePoints = flags[home]?.points ?? 1400;
   const awayPoints = flags[away]?.points ?? 1400;
-  const rankFactor = Math.min(0.2, Math.max(-0.2, (homePoints - awayPoints) / 2000));
+  const rankFactor = Math.min(0.4, Math.max(-0.4, (homePoints - awayPoints) / 1000));
 
-  lambdaH = Math.max(0.3, Math.min(lambdaH * (1 + rankFactor), 6));
-  lambdaA = Math.max(0.3, Math.min(lambdaA * (1 - rankFactor), 6));
+  lambdaH = lambdaH * (1 + rankFactor);
+  lambdaA = lambdaA * (1 - rankFactor);
+
+  // --- Recent form factor (last 10 games, exponentially weighted, ±15% effect) ---
+  const homeForm = calcFormFactor(h.recent_matches);
+  const awayForm = calcFormFactor(a.recent_matches);
+  const FORM_STRENGTH = 0.15;
+  lambdaH = lambdaH * (1 + homeForm * FORM_STRENGTH);
+  lambdaA = lambdaA * (1 + awayForm * FORM_STRENGTH);
+
+  lambdaH = Math.max(0.3, Math.min(lambdaH, 6));
+  lambdaA = Math.max(0.3, Math.min(lambdaA, 6));
 
   let homeWin = 0, draw = 0, awayWin = 0;
   const scores: ScoreProb[] = [];
@@ -94,6 +126,15 @@ export function predictMatch(
   };
 }
 
+// Minimum odds to display a bet (odds = 1/prob, so odds > 1.2 means prob < 1/1.2)
+const MIN_ODDS = 1.2;
+const MAX_PROB_FOR_ODDS = 1 / MIN_ODDS; // ≈ 0.833
+
+function toOdds(prob: number): string {
+  if (prob <= 0) return "—";
+  return (1 / prob).toFixed(2);
+}
+
 export function getBets(
   game: { home: string; away: string },
   pred: Prediction
@@ -103,66 +144,67 @@ export function getBets(
   const favP = Math.max(pred.homeWin, pred.awayWin);
   const top = pred.topScores[0];
 
-  if (favP >= 0.6)
+  if (favP >= 0.5 && favP < MAX_PROB_FOR_ODDS)
     bets.push({
       name: `Sieg ${fav}`,
-      val: `${Math.round(favP * 100)}%`,
+      val: toOdds(favP),
       prob: favP,
       conf: favP >= 0.7 ? "high" : "medium",
       icon: "🏆",
       isTopPick: favP >= 0.65,
     });
 
-  if (pred.over15 >= 0.80)
+  if (pred.over15 >= 0.58 && pred.over15 < MAX_PROB_FOR_ODDS)
     bets.push({
       name: "Über 1.5 Tore",
-      val: `${Math.round(pred.over15 * 100)}%`,
+      val: toOdds(pred.over15),
       prob: pred.over15,
       conf: pred.over15 >= 0.80 ? "high" : "medium",
       icon: "⚽",
       isTopPick: pred.over15 >= 0.85,
     });
 
-  if (pred.over25 >= 0.58)
+  if (pred.over25 >= 0.45 && pred.over25 < MAX_PROB_FOR_ODDS)
     bets.push({
       name: "Über 2.5 Tore",
-      val: `${Math.round(pred.over25 * 100)}%`,
+      val: toOdds(pred.over25),
       prob: pred.over25,
       conf: pred.over25 >= 0.7 ? "high" : "medium",
       icon: "⚽",
       isTopPick: pred.over25 >= 0.65,
     });
 
-  if (pred.btts >= 0.55)
+  if (pred.btts >= 0.45 && pred.btts < MAX_PROB_FOR_ODDS)
     bets.push({
       name: "Beide Teams treffen",
-      val: `${Math.round(pred.btts * 100)}%`,
+      val: toOdds(pred.btts),
       prob: pred.btts,
       conf: pred.btts >= 0.68 ? "high" : "medium",
       icon: "🎯",
       isTopPick: pred.btts >= 0.6,
     });
 
-  if (pred.over35 >= 0.45)
+  if (pred.over35 >= 0.35 && pred.over35 < MAX_PROB_FOR_ODDS)
     bets.push({
       name: "Über 3.5 Tore",
-      val: `${Math.round(pred.over35 * 100)}%`,
+      val: toOdds(pred.over35),
       prob: pred.over35,
       conf: "medium",
       icon: "🔥",
       isTopPick: false,
     });
 
-  if (pred.draw >= 0.28)
+  if (pred.draw >= 0.25 && pred.draw < MAX_PROB_FOR_ODDS)
     bets.push({
       name: "Unentschieden",
-      val: `${Math.round(pred.draw * 100)}%`,
+      val: toOdds(pred.draw),
       prob: pred.draw,
       conf: "medium",
       icon: "🤝",
       isTopPick: false,
     });
 
+  // Score tip: always shown, no odds filter (not prob-based)
   bets.push({
     name: "Ergebnis-Tipp",
     val: `${top.h}:${top.a}`,
@@ -173,3 +215,4 @@ export function getBets(
 
   return bets;
 }
+

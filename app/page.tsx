@@ -1,5 +1,7 @@
 import { getFixtures, getTeamStats, getTeamFlags } from "@/lib/queries";
 import { predictMatch, getBets } from "@/lib/predictions";
+import { computeGroupStandings } from "@/lib/groupStandings";
+import { computePlayoffBracket } from "@/lib/playoff";
 import Dashboard, { type ProcessedGame } from "@/components/Dashboard";
 
 export const dynamic = "force-dynamic";
@@ -35,5 +37,17 @@ export default function Page() {
     };
   });
 
-  return <Dashboard games={games} />;
+  const { byGroup, thirdPlaces } = computeGroupStandings(games, flags);
+
+  // Build FIFA points lookup for playoff simulation
+  const fifaPoints: Record<string, number> = {};
+  for (const [name, info] of Object.entries(flags)) {
+    if (info.points != null) fifaPoints[name] = info.points;
+  }
+
+  const playoffBracket = computePlayoffBracket(byGroup, thirdPlaces, fifaPoints);
+
+  return <Dashboard games={games} groupStandings={byGroup} thirdPlaces={thirdPlaces} playoffBracket={playoffBracket} />;
 }
+
+
