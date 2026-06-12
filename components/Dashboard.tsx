@@ -29,6 +29,9 @@ export interface ProcessedGame {
   h2h: H2HMatch[];
   pred: Prediction;
   bets: Bet[];
+  is_future: boolean;
+  actual_home_score: number | null;
+  actual_away_score: number | null;
 }
 
 interface Props {

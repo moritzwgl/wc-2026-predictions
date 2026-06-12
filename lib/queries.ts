@@ -37,6 +37,9 @@ export interface Fixture {
   city: string;
   country: string;
   h2h: H2HMatch[];
+  is_future: number;
+  home_score: number | null;
+  away_score: number | null;
 }
 
 let cachedJsonData: any = null;
@@ -83,7 +86,7 @@ export function getFixtures(): Fixture[] {
     const wcTournament = tournaments.find((t: any) => t.name === 'FIFA World Cup 2026');
     if (!wcTournament) return [];
     
-    const futureMatches = matches.filter((m: any) => m.is_future === 1 && m.tournament_id === wcTournament.id);
+    const futureMatches = matches.filter((m: any) => m.tournament_id === wcTournament.id);
     const teamMap = new Map<number, any>(teams.map((t: any) => [t.id, t]));
     const venueMap = new Map<number, any>(venues.map((v: any) => [v.id, v]));
 
@@ -117,7 +120,10 @@ export function getFixtures(): Fixture[] {
         away: at.name,
         city: v.city,
         country: v.country,
-        h2h
+        h2h,
+        is_future: m.is_future,
+        home_score: m.home_score,
+        away_score: m.away_score
       };
     });
   }
@@ -126,16 +132,16 @@ export function getFixtures(): Fixture[] {
 
   const rows = db
     .prepare(
-      `SELECT m.date, ht.name AS home, at.name AS away, v.city, v.country
+      `SELECT m.date, ht.name AS home, at.name AS away, v.city, v.country, m.is_future, m.home_score, m.away_score
        FROM matches m
        JOIN teams       ht ON m.home_team_id  = ht.id
        JOIN teams       at ON m.away_team_id  = at.id
        JOIN venues      v  ON m.venue_id      = v.id
        JOIN tournaments t  ON m.tournament_id = t.id
-       WHERE m.is_future = 1 AND t.name = 'FIFA World Cup 2026'
+       WHERE t.name = 'FIFA World Cup 2026'
        ORDER BY m.date, m.id`
     )
-    .all() as { date: string; home: string; away: string; city: string; country: string }[];
+    .all() as { date: string; home: string; away: string; city: string; country: string; is_future: number; home_score: number | null; away_score: number | null }[];
 
   const h2hStmt = db.prepare(
     `SELECT m.date, ht.name AS home, at.name AS away, m.home_score, m.away_score

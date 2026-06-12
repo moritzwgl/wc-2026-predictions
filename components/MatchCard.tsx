@@ -85,11 +85,11 @@ export default function MatchCard({ game, oddsFormat = "percent" }: { game: Proc
 
   return (
     <div
-      className={`card-accent rounded-xl border border-gold/10 mb-2.5 overflow-hidden transition-all ${expanded ? "expanded" : ""}`}
+      className={`card-accent rounded-xl border border-gold/10 mb-2.5 overflow-hidden transition-all ${expanded ? "expanded" : ""} ${!game.is_future ? "opacity-60 grayscale" : ""}`}
       style={{ background: "#0e1520" }}
     >
       {/* Clickable summary */}
-      <div onClick={() => setExpanded((v) => !v)} className="cursor-pointer">
+      <div onClick={() => game.is_future && setExpanded((v) => !v)} className={game.is_future ? "cursor-pointer" : ""}>
 
         {/* Teams + Score row */}
         <div className="grid items-center" style={{ gridTemplateColumns: "1fr auto 1fr" }}>
@@ -114,20 +114,31 @@ export default function MatchCard({ game, oddsFormat = "percent" }: { game: Proc
 
           {/* Center: score + probability */}
           <div className="px-5 py-4 flex flex-col items-center gap-1.5 border-x border-gold/10 min-w-[150px] md:min-w-[180px]">
-            <span className="text-xs uppercase tracking-[0.15em] text-slate-500">Prognose</span>
-            <span className="font-display text-5xl md:text-6xl text-gold-light tracking-widest leading-none">
-              {top.h}:{top.a}
-            </span>
-            <div className="prob-bar w-full mt-1">
-              <div style={{ width: `${hwP}%`, background: "#3b82f6" }} />
-              <div style={{ width: `${dwP}%`, background: "#475569" }} />
-              <div style={{ width: `${awP}%`, background: "#ef4444" }} />
-            </div>
-            <div className="flex justify-between w-full font-mono text-xs mt-0.5">
-              <span className="text-blue-400">{hwP}%</span>
-              <span className="text-slate-500">{dwP}%</span>
-              <span className="text-red-400">{awP}%</span>
-            </div>
+            {game.is_future ? (
+              <>
+                <span className="text-xs uppercase tracking-[0.15em] text-slate-500">Prognose</span>
+                <span className="font-display text-5xl md:text-6xl text-gold-light tracking-widest leading-none">
+                  {top.h}:{top.a}
+                </span>
+                <div className="prob-bar w-full mt-1">
+                  <div style={{ width: `${hwP}%`, background: "#3b82f6" }} />
+                  <div style={{ width: `${dwP}%`, background: "#475569" }} />
+                  <div style={{ width: `${awP}%`, background: "#ef4444" }} />
+                </div>
+                <div className="flex justify-between w-full font-mono text-xs mt-0.5">
+                  <span className="text-blue-400">{hwP}%</span>
+                  <span className="text-slate-500">{dwP}%</span>
+                  <span className="text-red-400">{awP}%</span>
+                </div>
+              </>
+            ) : (
+              <>
+                <span className="text-xs uppercase tracking-[0.15em] text-emerald-500">Beendet</span>
+                <span className="font-display text-5xl md:text-6xl text-slate-300 tracking-widest leading-none">
+                  {game.actual_home_score ?? 0}:{game.actual_away_score ?? 0}
+                </span>
+              </>
+            )}
           </div>
 
           {/* Away */}
@@ -156,17 +167,23 @@ export default function MatchCard({ game, oddsFormat = "percent" }: { game: Proc
         >
           <span className="text-xs text-slate-600 shrink-0">📍 {game.city}</span>
           <div className="w-px h-3 bg-gold/10 shrink-0" />
-          {bets.slice(0, 3).map((b, i) => (
-            <div
-              key={i}
-              className={`text-xs px-2.5 py-1 rounded border ${BET_COLORS[i]} whitespace-nowrap`}
-            >
-              {b.icon} {b.name}: <span className="font-semibold">{b.val}</span>
-            </div>
-          ))}
-          <div className="ml-auto text-slate-600 text-xs shrink-0 select-none">
-            {expanded ? "▲" : "▼"}
-          </div>
+          {game.is_future ? (
+            <>
+              {bets.slice(0, 3).map((b, i) => (
+                <div
+                  key={i}
+                  className={`text-xs px-2.5 py-1 rounded border ${BET_COLORS[i]} whitespace-nowrap`}
+                >
+                  {b.icon} {b.name}: <span className="font-semibold">{b.val}</span>
+                </div>
+              ))}
+              <div className="ml-auto text-slate-600 text-xs shrink-0 select-none">
+                {expanded ? "▲" : "▼"}
+              </div>
+            </>
+          ) : (
+            <div className="text-xs text-slate-500 italic">Keine Vorhersagen</div>
+          )}
         </div>
       </div>
 
