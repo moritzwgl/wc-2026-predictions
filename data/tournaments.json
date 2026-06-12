@@ -1,0 +1,602 @@
+[
+  {
+    "id": 1,
+    "name": "Friendly"
+  },
+  {
+    "id": 4,
+    "name": "Muratti Vase"
+  },
+  {
+    "id": 5,
+    "name": "Copa Lipton"
+  },
+  {
+    "id": 12,
+    "name": "Copa América"
+  },
+  {
+    "id": 16,
+    "name": "Soccer Ashes"
+  },
+  {
+    "id": 18,
+    "name": "Nordic Championship"
+  },
+  {
+    "id": 20,
+    "name": "Baltic Cup"
+  },
+  {
+    "id": 23,
+    "name": "FIFA World Cup"
+  },
+  {
+    "id": 25,
+    "name": "FIFA World Cup qualification"
+  },
+  {
+    "id": 30,
+    "name": "Asian Games"
+  },
+  {
+    "id": 32,
+    "name": "Copa del Pacífico"
+  },
+  {
+    "id": 34,
+    "name": "AFC Asian Cup qualification"
+  },
+  {
+    "id": 36,
+    "name": "AFC Asian Cup"
+  },
+  {
+    "id": 37,
+    "name": "African Cup of Nations"
+  },
+  {
+    "id": 38,
+    "name": "Copa Paz del Chaco"
+  },
+  {
+    "id": 39,
+    "name": "Merdeka Tournament"
+  },
+  {
+    "id": 40,
+    "name": "UEFA Euro qualification"
+  },
+  {
+    "id": 43,
+    "name": "UEFA Euro"
+  },
+  {
+    "id": 44,
+    "name": "Windward Islands Tournament"
+  },
+  {
+    "id": 45,
+    "name": "African Cup of Nations qualification"
+  },
+  {
+    "id": 51,
+    "name": "Arab Cup"
+  },
+  {
+    "id": 52,
+    "name": "South Pacific Games"
+  },
+  {
+    "id": 58,
+    "name": "Copa América qualification"
+  },
+  {
+    "id": 59,
+    "name": "King's Cup"
+  },
+  {
+    "id": 60,
+    "name": "Gulf Cup"
+  },
+  {
+    "id": 62,
+    "name": "Korea Cup"
+  },
+  {
+    "id": 66,
+    "name": "Oceania Nations Cup"
+  },
+  {
+    "id": 67,
+    "name": "CECAFA Cup"
+  },
+  {
+    "id": 72,
+    "name": "Southeast Asian Games"
+  },
+  {
+    "id": 73,
+    "name": "Kirin Cup"
+  },
+  {
+    "id": 74,
+    "name": "CFU Caribbean Cup qualification"
+  },
+  {
+    "id": 75,
+    "name": "CFU Caribbean Cup"
+  },
+  {
+    "id": 76,
+    "name": "Amílcar Cabral Cup"
+  },
+  {
+    "id": 78,
+    "name": "Indian Ocean Island Games"
+  },
+  {
+    "id": 81,
+    "name": "South Pacific Mini Games"
+  },
+  {
+    "id": 83,
+    "name": "Nehru Cup"
+  },
+  {
+    "id": 84,
+    "name": "Merlion Cup"
+  },
+  {
+    "id": 85,
+    "name": "Trans-Tasman Cup"
+  },
+  {
+    "id": 87,
+    "name": "South Asian Games"
+  },
+  {
+    "id": 88,
+    "name": "UDEAC Cup"
+  },
+  {
+    "id": 90,
+    "name": "CONMEBOL–UEFA Cup of Champions"
+  },
+  {
+    "id": 91,
+    "name": "Miami Cup"
+  },
+  {
+    "id": 92,
+    "name": "Lunar New Year Cup"
+  },
+  {
+    "id": 93,
+    "name": "Arab Cup qualification"
+  },
+  {
+    "id": 94,
+    "name": "Tournoi de France"
+  },
+  {
+    "id": 95,
+    "name": "Malta International Tournament"
+  },
+  {
+    "id": 96,
+    "name": "Four Nations Tournament"
+  },
+  {
+    "id": 99,
+    "name": "Marlboro Cup"
+  },
+  {
+    "id": 100,
+    "name": "Melanesia Cup"
+  },
+  {
+    "id": 101,
+    "name": "Island Games"
+  },
+  {
+    "id": 102,
+    "name": "NAFU Championship"
+  },
+  {
+    "id": 103,
+    "name": "Dynasty Cup"
+  },
+  {
+    "id": 104,
+    "name": "Dakar Tournament"
+  },
+  {
+    "id": 105,
+    "name": "UNCAF Cup"
+  },
+  {
+    "id": 106,
+    "name": "Scania 100 Tournament"
+  },
+  {
+    "id": 107,
+    "name": "Gold Cup"
+  },
+  {
+    "id": 108,
+    "name": "USA Cup"
+  },
+  {
+    "id": 109,
+    "name": "Jordan International Tournament"
+  },
+  {
+    "id": 110,
+    "name": "Confederations Cup"
+  },
+  {
+    "id": 111,
+    "name": "East Asian Games"
+  },
+  {
+    "id": 112,
+    "name": "United Arab Emirates Friendship Tournament"
+  },
+  {
+    "id": 113,
+    "name": "Joe Robbie Cup"
+  },
+  {
+    "id": 114,
+    "name": "Oceania Nations Cup qualification"
+  },
+  {
+    "id": 115,
+    "name": "Simba Tournament"
+  },
+  {
+    "id": 116,
+    "name": "SAFF Cup"
+  },
+  {
+    "id": 117,
+    "name": "AFF Championship"
+  },
+  {
+    "id": 118,
+    "name": "King Hassan II Tournament"
+  },
+  {
+    "id": 119,
+    "name": "Cyprus International Tournament"
+  },
+  {
+    "id": 120,
+    "name": "Dunhill Cup"
+  },
+  {
+    "id": 121,
+    "name": "COSAFA Cup qualification"
+  },
+  {
+    "id": 122,
+    "name": "COSAFA Cup"
+  },
+  {
+    "id": 123,
+    "name": "Gold Cup qualification"
+  },
+  {
+    "id": 124,
+    "name": "AFF Championship qualification"
+  },
+  {
+    "id": 125,
+    "name": "SKN Football Festival"
+  },
+  {
+    "id": 126,
+    "name": "Four Nations' Cup"
+  },
+  {
+    "id": 127,
+    "name": "UNIFFAC Cup"
+  },
+  {
+    "id": 128,
+    "name": "WAFF Championship"
+  },
+  {
+    "id": 129,
+    "name": "Millennium Cup"
+  },
+  {
+    "id": 130,
+    "name": "Cup of Ancient Civilizations"
+  },
+  {
+    "id": 131,
+    "name": "Prime Minister's Cup"
+  },
+  {
+    "id": 132,
+    "name": "Unity Cup"
+  },
+  {
+    "id": 133,
+    "name": "The Other Final"
+  },
+  {
+    "id": 134,
+    "name": "EAFF Championship"
+  },
+  {
+    "id": 135,
+    "name": "TIFOCO Tournament"
+  },
+  {
+    "id": 136,
+    "name": "Afro-Asian Games"
+  },
+  {
+    "id": 137,
+    "name": "AFC Challenge Cup"
+  },
+  {
+    "id": 138,
+    "name": "FIFI Wild Cup"
+  },
+  {
+    "id": 139,
+    "name": "ELF Cup"
+  },
+  {
+    "id": 140,
+    "name": "Viva World Cup"
+  },
+  {
+    "id": 141,
+    "name": "AFC Challenge Cup qualification"
+  },
+  {
+    "id": 142,
+    "name": "Coupe de l'Outre-Mer"
+  },
+  {
+    "id": 143,
+    "name": "VFF Cup"
+  },
+  {
+    "id": 144,
+    "name": "Corsica Cup"
+  },
+  {
+    "id": 145,
+    "name": "Dragon Cup"
+  },
+  {
+    "id": 146,
+    "name": "ABCS Tournament"
+  },
+  {
+    "id": 147,
+    "name": "Nile Basin Tournament"
+  },
+  {
+    "id": 148,
+    "name": "Nations Cup"
+  },
+  {
+    "id": 149,
+    "name": "Copa Confraternidad"
+  },
+  {
+    "id": 150,
+    "name": "Pacific Games"
+  },
+  {
+    "id": 151,
+    "name": "Superclásico de las Américas"
+  },
+  {
+    "id": 152,
+    "name": "Palestine International Championship"
+  },
+  {
+    "id": 153,
+    "name": "Philippine Peace Cup"
+  },
+  {
+    "id": 154,
+    "name": "Kirin Challenge Cup"
+  },
+  {
+    "id": 155,
+    "name": "International Tournament of Peoples, Cultures and Tribes"
+  },
+  {
+    "id": 156,
+    "name": "Tynwald Hill Tournament"
+  },
+  {
+    "id": 157,
+    "name": "OSN Cup"
+  },
+  {
+    "id": 158,
+    "name": "CONIFA World Football Cup"
+  },
+  {
+    "id": 159,
+    "name": "Niamh Challenge Cup"
+  },
+  {
+    "id": 160,
+    "name": "CONIFA European Football Cup"
+  },
+  {
+    "id": 161,
+    "name": "Benedikt Fontana Cup"
+  },
+  {
+    "id": 162,
+    "name": "ConIFA Challenger Cup"
+  },
+  {
+    "id": 163,
+    "name": "Hungary Heritage Cup"
+  },
+  {
+    "id": 164,
+    "name": "World Unity Cup"
+  },
+  {
+    "id": 165,
+    "name": "AFC Solidarity Cup"
+  },
+  {
+    "id": 166,
+    "name": "Pacific Mini Games"
+  },
+  {
+    "id": 167,
+    "name": "Intercontinental Cup"
+  },
+  {
+    "id": 168,
+    "name": "UEFA Nations League"
+  },
+  {
+    "id": 169,
+    "name": "CONCACAF Nations League qualification"
+  },
+  {
+    "id": 170,
+    "name": "Atlantic Heritage Cup"
+  },
+  {
+    "id": 171,
+    "name": "Inter Games"
+  },
+  {
+    "id": 172,
+    "name": "CONCACAF Nations League"
+  },
+  {
+    "id": 173,
+    "name": "CONIFA World Cup qualification"
+  },
+  {
+    "id": 174,
+    "name": "Three Nations Cup"
+  },
+  {
+    "id": 175,
+    "name": "Mahinda Rajapaksa Cup"
+  },
+  {
+    "id": 176,
+    "name": "Navruz Cup"
+  },
+  {
+    "id": 177,
+    "name": "CONIFA Africa Football Cup"
+  },
+  {
+    "id": 178,
+    "name": "CONIFA South America Football Cup"
+  },
+  {
+    "id": 179,
+    "name": "MSG Prime Minister's Cup"
+  },
+  {
+    "id": 180,
+    "name": "Tri Nation Tournament"
+  },
+  {
+    "id": 181,
+    "name": "CAFA Nations Cup"
+  },
+  {
+    "id": 182,
+    "name": "Mauritius Four Nations Cup"
+  },
+  {
+    "id": 183,
+    "name": "CONIFA World Football Cup qualification"
+  },
+  {
+    "id": 184,
+    "name": "CONIFA Asia Cup"
+  },
+  {
+    "id": 185,
+    "name": "FIFA Series"
+  },
+  {
+    "id": 186,
+    "name": "Marianas Cup"
+  },
+  {
+    "id": 187,
+    "name": "Tri-Nations Series"
+  },
+  {
+    "id": 188,
+    "name": "ASEAN Championship qualification"
+  },
+  {
+    "id": 189,
+    "name": "ASEAN Championship"
+  },
+  {
+    "id": 190,
+    "name": "EAFF Championship qualification"
+  },
+  {
+    "id": 191,
+    "name": "Mapinduzi Cup"
+  },
+  {
+    "id": 192,
+    "name": "Canadian Shield"
+  },
+  {
+    "id": 193,
+    "name": "Outrigger Challenge Cup"
+  },
+  {
+    "id": 194,
+    "name": "South Asian Super Cup"
+  },
+  {
+    "id": 195,
+    "name": "CONCACAF Series"
+  },
+  {
+    "id": 196,
+    "name": "Al Ain International Cup"
+  },
+  {
+    "id": 197,
+    "name": "Morocco, Capital of African Football"
+  },
+  {
+    "id": 198,
+    "name": "Mukuru 4 Nations"
+  },
+  {
+    "id": 199,
+    "name": "Diamond Jubilee International Football Tournament"
+  },
+  {
+    "id": 200,
+    "name": "Tri-Nations Cup"
+  },
+  {
+    "id": 201,
+    "name": "FIFA World Cup 2026"
+  }
+]
