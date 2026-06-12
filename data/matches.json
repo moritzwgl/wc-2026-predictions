@@ -387124,24 +387124,24 @@
     "date": "2026-06-11",
     "home_team_id": 57,
     "away_team_id": 21,
-    "home_score": null,
-    "away_score": null,
+    "home_score": 2,
+    "away_score": 0,
     "tournament_id": 201,
     "venue_id": 149,
     "neutral": 0,
-    "is_future": 1
+    "is_future": 0
   },
   {
     "id": 49380,
     "date": "2026-06-11",
     "home_team_id": 114,
     "away_team_id": 247,
-    "home_score": null,
-    "away_score": null,
+    "home_score": 2,
+    "away_score": 1,
     "tournament_id": 201,
     "venue_id": 1692,
     "neutral": 1,
-    "is_future": 1
+    "is_future": 0
   },
   {
     "id": 49381,
