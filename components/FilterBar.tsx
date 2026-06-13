@@ -61,13 +61,24 @@ export default function FilterBar({
           >
             {oddsFormat === "percent" ? "Format: %" : "Format: Quoten"}
           </button>
-          <input
-            type="text"
-            placeholder="Team suchen …"
-            value={searchTerm}
-            onChange={(e) => onSearch(e.target.value)}
-            className="bg-white/5 border border-gold/15 rounded-lg px-4 py-2 text-sm text-slate-300 placeholder-slate-600 focus:outline-none focus:border-gold/40 w-48"
-          />
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Team suchen …"
+              value={searchTerm}
+              onChange={(e) => onSearch(e.target.value)}
+              className="bg-white/5 border border-gold/15 rounded-lg px-4 py-2 pr-8 text-sm text-slate-300 placeholder-slate-600 focus:outline-none focus:border-gold/40 w-48"
+            />
+            {searchTerm && (
+              <button
+                onClick={() => onSearch("")}
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 flex items-center justify-center w-5 h-5"
+                title="Suche löschen"
+              >
+                ✕
+              </button>
+            )}
+          </div>
         </div>
 
         <span className="text-sm text-slate-500 font-mono whitespace-nowrap">

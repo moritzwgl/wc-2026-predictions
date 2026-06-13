@@ -23,6 +23,7 @@ export default function BatchPanel({ games, oddsFormat }: Props) {
   const [open, setOpen] = useState(false);
 
   const topBets = games
+    .filter((g) => g.is_future)
     .flatMap((g) =>
       g.bets
         .filter((b) => b.isTopPick && (b.conf === "high" || b.conf === "medium"))
