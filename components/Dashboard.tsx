@@ -32,6 +32,7 @@ export interface ProcessedGame {
   is_future: boolean;
   actual_home_score: number | null;
   actual_away_score: number | null;
+  kickoff_utc: string | null;
 }
 
 interface Props {

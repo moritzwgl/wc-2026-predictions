@@ -37,6 +37,7 @@ export default function Page() {
       is_future: f.is_future === 1,
       actual_home_score: f.home_score,
       actual_away_score: f.away_score,
+      kickoff_utc: f.kickoff_utc ?? null,
     };
   });
 

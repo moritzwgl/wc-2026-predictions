@@ -65,6 +65,15 @@ const statRow = (label: string, value: string | number, extraClass = "") => (
   </div>
 );
 
+function formatKickoff(utc: string | null): string | null {
+  if (!utc) return null;
+  const [h, m] = utc.split(":").map(Number);
+  const totalMinutes = (h * 60 + m + 120) % (24 * 60); // UTC+2 (CEST)
+  const localH = Math.floor(totalMinutes / 60);
+  const localM = totalMinutes % 60;
+  return `${String(localH).padStart(2, "0")}:${String(localM).padStart(2, "0")} Uhr`;
+}
+
 export default function MatchCard({ game, oddsFormat = "percent" }: { game: ProcessedGame; oddsFormat?: "percent" | "decimal" }) {
   const [expanded, setExpanded] = useState(false);
   const { pred, bets } = game;
@@ -117,6 +126,11 @@ export default function MatchCard({ game, oddsFormat = "percent" }: { game: Proc
             {game.is_future ? (
               <>
                 <span className="text-xs uppercase tracking-[0.15em] text-slate-500">Prognose</span>
+                {game.kickoff_utc && (
+                  <span className="text-xs font-mono text-gold/70 -mb-0.5">
+                    {formatKickoff(game.kickoff_utc)}
+                  </span>
+                )}
                 <span className="font-display text-5xl md:text-6xl text-gold-light tracking-widest leading-none">
                   {top.h}:{top.a}
                 </span>
@@ -134,6 +148,11 @@ export default function MatchCard({ game, oddsFormat = "percent" }: { game: Proc
             ) : (
               <>
                 <span className="text-xs uppercase tracking-[0.15em] text-emerald-500">Beendet</span>
+                {game.kickoff_utc && (
+                  <span className="text-xs font-mono text-slate-600 -mb-0.5">
+                    {formatKickoff(game.kickoff_utc)}
+                  </span>
+                )}
                 <span className="font-display text-5xl md:text-6xl text-slate-300 tracking-widest leading-none">
                   {game.actual_home_score ?? 0}:{game.actual_away_score ?? 0}
                 </span>

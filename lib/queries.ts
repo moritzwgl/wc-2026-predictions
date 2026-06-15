@@ -40,6 +40,7 @@ export interface Fixture {
   is_future: number;
   home_score: number | null;
   away_score: number | null;
+  kickoff_utc: string | null;
 }
 
 let cachedJsonData: any = null;
@@ -90,9 +91,16 @@ export function getFixtures(): Fixture[] {
     const teamMap = new Map<number, any>(teams.map((t: any) => [t.id, t]));
     const venueMap = new Map<number, any>(venues.map((v: any) => [v.id, v]));
 
+    const kickoffSortKey = (m: any): number => {
+      if (!m.kickoff_utc) return 9999;
+      const [h, min] = m.kickoff_utc.split(":").map(Number);
+      // treat early-morning UTC times as "after midnight" for same-day sorting
+      const adjustedH = h < 12 ? h + 24 : h;
+      return adjustedH * 60 + min;
+    };
     futureMatches.sort((a: any, b: any) => {
       if (a.date !== b.date) return a.date.localeCompare(b.date);
-      return a.id - b.id;
+      return kickoffSortKey(a) - kickoffSortKey(b);
     });
 
     return futureMatches.map((m: any) => {
@@ -123,7 +131,8 @@ export function getFixtures(): Fixture[] {
         h2h,
         is_future: m.is_future,
         home_score: m.home_score,
-        away_score: m.away_score
+        away_score: m.away_score,
+        kickoff_utc: m.kickoff_utc ?? null,
       };
     });
   }
@@ -132,16 +141,22 @@ export function getFixtures(): Fixture[] {
 
   const rows = db
     .prepare(
-      `SELECT m.date, ht.name AS home, at.name AS away, v.city, v.country, m.is_future, m.home_score, m.away_score
+      `SELECT m.date, ht.name AS home, at.name AS away, v.city, v.country, m.is_future, m.home_score, m.away_score, m.kickoff_utc
        FROM matches m
        JOIN teams       ht ON m.home_team_id  = ht.id
        JOIN teams       at ON m.away_team_id  = at.id
        JOIN venues      v  ON m.venue_id      = v.id
        JOIN tournaments t  ON m.tournament_id = t.id
        WHERE t.name = 'FIFA World Cup 2026'
-       ORDER BY m.date, m.id`
+       ORDER BY m.date,
+         CASE WHEN m.kickoff_utc IS NULL THEN 9999
+              WHEN CAST(SUBSTR(m.kickoff_utc, 1, 2) AS INTEGER) < 12
+                THEN (CAST(SUBSTR(m.kickoff_utc, 1, 2) AS INTEGER) + 24) * 60 + CAST(SUBSTR(m.kickoff_utc, 4, 2) AS INTEGER)
+              ELSE CAST(SUBSTR(m.kickoff_utc, 1, 2) AS INTEGER) * 60 + CAST(SUBSTR(m.kickoff_utc, 4, 2) AS INTEGER)
+         END,
+         m.id`
     )
-    .all() as { date: string; home: string; away: string; city: string; country: string; is_future: number; home_score: number | null; away_score: number | null }[];
+    .all() as { date: string; home: string; away: string; city: string; country: string; is_future: number; home_score: number | null; away_score: number | null; kickoff_utc: string | null }[];
 
   const h2hStmt = db.prepare(
     `SELECT m.date, ht.name AS home, at.name AS away, m.home_score, m.away_score
@@ -158,6 +173,7 @@ export function getFixtures(): Fixture[] {
   return rows.map((r) => ({
     ...r,
     h2h: h2hStmt.all(r.home, r.away, r.away, r.home) as H2HMatch[],
+    kickoff_utc: r.kickoff_utc ?? null,
   }));
 }
 
