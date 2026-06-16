@@ -115,11 +115,27 @@ export function computeGroupStandings(
   for (const g of groupGames) {
     const hk = resolveTeam(g.home)!;
     const ak = resolveTeam(g.away)!;
-    const p = g.pred;
 
-    const hWin = p.homeWin;
-    const draw = p.draw;
-    const aWin = p.awayWin;
+    const isPlayed = !g.is_future && g.actual_home_score != null && g.actual_away_score != null;
+
+    let hWin: number, draw: number, aWin: number, hGoals: number, aGoals: number;
+
+    if (isPlayed) {
+      const hs = g.actual_home_score!;
+      const as_ = g.actual_away_score!;
+      hWin = hs > as_ ? 1 : 0;
+      draw = hs === as_ ? 1 : 0;
+      aWin = hs < as_ ? 1 : 0;
+      hGoals = hs;
+      aGoals = as_;
+    } else {
+      const p = g.pred;
+      hWin = p.homeWin;
+      draw = p.draw;
+      aWin = p.awayWin;
+      hGoals = p.lambdaH;
+      aGoals = p.lambdaA;
+    }
 
     standings[hk].pts += hWin * 3 + draw;
     standings[ak].pts += aWin * 3 + draw;
@@ -131,10 +147,10 @@ export function computeGroupStandings(
     standings[ak].d += draw;
     standings[ak].l += hWin;
 
-    standings[hk].gf += p.lambdaH;
-    standings[hk].ga += p.lambdaA;
-    standings[ak].gf += p.lambdaA;
-    standings[ak].ga += p.lambdaH;
+    standings[hk].gf += hGoals;
+    standings[hk].ga += aGoals;
+    standings[ak].gf += aGoals;
+    standings[ak].ga += hGoals;
 
     standings[hk].played += 1;
     standings[ak].played += 1;
