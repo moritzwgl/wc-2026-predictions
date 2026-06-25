@@ -25,6 +25,8 @@ export interface PlayoffMatchup {
   winner: PlayoffTeam | null;
   /** Winner probability */
   winnerProb: number;
+  /** Date and Time of the match */
+  date?: string;
 }
 
 export interface PlayoffBracket {
@@ -114,14 +116,34 @@ function computeWinProb(a: PlayoffTeam, b: PlayoffTeam): number {
   return 0.5 + (blended - 0.5) * 0.85;
 }
 
+function getMatchDate(id: number): string {
+  if (id <= 2) return "28. Jun 2026, 18:00 MEZ";
+  if (id <= 5) return "29. Jun 2026, 18:00 MEZ";
+  if (id <= 8) return "30. Jun 2026, 18:00 MEZ";
+  if (id <= 11) return "01. Jul 2026, 18:00 MEZ";
+  if (id <= 14) return "02. Jul 2026, 18:00 MEZ";
+  if (id <= 16) return "03. Jul 2026, 18:00 MEZ";
+  if (id <= 18) return "04. Jul 2026, 20:00 MEZ";
+  if (id <= 20) return "05. Jul 2026, 20:00 MEZ";
+  if (id <= 22) return "06. Jul 2026, 20:00 MEZ";
+  if (id <= 24) return "07. Jul 2026, 20:00 MEZ";
+  if (id === 25) return "09. Jul 2026, 20:00 MEZ";
+  if (id === 26) return "10. Jul 2026, 20:00 MEZ";
+  if (id <= 28) return "11. Jul 2026, 20:00 MEZ";
+  if (id === 29) return "14. Jul 2026, 21:00 MEZ";
+  if (id === 30) return "15. Jul 2026, 21:00 MEZ";
+  return "19. Jul 2026, 21:00 MEZ";
+}
+
 function simulateMatchup(
   id: number,
   round: string,
   teamA: PlayoffTeam | null,
   teamB: PlayoffTeam | null
 ): PlayoffMatchup {
+  const date = getMatchDate(id);
   if (!teamA || !teamB) {
-    return { id, round, teamA, teamB, probA: 0.5, probB: 0.5, winner: teamA ?? teamB, winnerProb: 1 };
+    return { id, round, teamA, teamB, probA: 0.5, probB: 0.5, winner: teamA ?? teamB, winnerProb: 1, date };
   }
   const probA = computeWinProb(teamA, teamB);
   const probB = 1 - probA;
@@ -135,6 +157,7 @@ function simulateMatchup(
     probB: +probB.toFixed(3),
     winner,
     winnerProb: +(Math.max(probA, probB)).toFixed(3),
+    date,
   };
 }
 

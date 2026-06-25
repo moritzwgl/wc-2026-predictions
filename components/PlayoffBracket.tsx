@@ -28,7 +28,7 @@ function TeamSlot({
 }) {
   if (!team) {
     return (
-      <div className={`flex items-center gap-2 px-3 py-1.5 rounded ${small ? "text-[10px]" : "text-xs"} text-slate-600 italic`}>
+      <div className={`flex items-center gap-2 px-3 py-1.5 rounded ${small ? "text-[11px]" : "text-sm"} text-slate-600 italic`}>
         TBD
       </div>
     );
@@ -45,13 +45,13 @@ function TeamSlot({
     >
       <FlagIcon emoji={team.flag} className={small ? "w-4 h-4 shrink-0" : "w-5 h-5 shrink-0"} />
       <span
-        className={`font-medium truncate flex-1 ${small ? "text-[11px]" : "text-xs"}`}
+        className={`font-medium truncate flex-1 ${small ? "text-xs" : "text-sm"}`}
         style={{ color: isWinner ? "#f0c96e" : "#94a3b8" }}
       >
         {team.team}
       </span>
       <span
-        className={`font-mono font-bold shrink-0 ${small ? "text-[10px]" : "text-xs"}`}
+        className={`font-mono font-bold shrink-0 ${small ? "text-[11px]" : "text-sm"}`}
         style={{ color: winColor }}
       >
         {Math.round(prob * 100)}%
@@ -81,10 +81,21 @@ function MatchCard({
       {/* Round label */}
       {!compact && (
         <div
-          className="px-3 py-1 text-[9px] uppercase tracking-[0.18em] font-semibold text-slate-600 border-b border-white/[0.04]"
+          className="px-3 py-1 flex items-center justify-between text-[11px] uppercase tracking-[0.18em] font-semibold text-slate-600 border-b border-white/[0.04]"
           style={{ background: "#090d17" }}
         >
-          {match.round} · #{match.id}
+          <span>{match.round} · #{match.id}</span>
+          {match.date && <span className="text-xs normal-case tracking-normal text-slate-500 font-medium">{match.date}</span>}
+        </div>
+      )}
+
+      {/* Compact date label */}
+      {compact && match.date && (
+        <div
+          className="px-2 py-0.5 text-[10px] text-center text-slate-500 border-b border-white/[0.04] uppercase tracking-wide"
+          style={{ background: "#090d17" }}
+        >
+          {match.date}
         </div>
       )}
 
@@ -92,7 +103,7 @@ function MatchCard({
         <TeamSlot team={match.teamA} prob={match.probA} isWinner={match.winner?.team === match.teamA?.team} small={compact} />
         <div className="flex items-center gap-1 px-2.5">
           <div className="flex-1 h-px bg-white/[0.04]" />
-          <span className="text-[9px] text-slate-700 font-mono uppercase tracking-wider">vs</span>
+          <span className="text-[10px] text-slate-700 font-mono uppercase tracking-wider">vs</span>
           <div className="flex-1 h-px bg-white/[0.04]" />
         </div>
         <TeamSlot team={match.teamB} prob={match.probB} isWinner={match.winner?.team === match.teamB?.team} small={compact} />
@@ -101,7 +112,7 @@ function MatchCard({
       {/* Winner bar */}
       {match.winner && (
         <div
-          className="px-3 py-1 text-[9px] text-slate-500 border-t border-white/[0.04] flex items-center gap-1"
+          className="px-3 py-1 text-[11px] text-slate-500 border-t border-white/[0.04] flex items-center gap-1"
           style={{ background: "#090d17" }}
         >
           <span className="text-amber-500">→</span>
@@ -229,7 +240,7 @@ export default function PlayoffBracketView({ bracket }: Props) {
       {/* Round of 32 */}
       <RoundSection title="Round of 32" icon="🎯" matches={bracket.roundOf32} compact />
 
-      <p className="text-center text-slate-700 text-[10px] pb-4">
+      <p className="text-center text-slate-700 text-xs pb-4">
         Matchup-Wahrscheinlichkeiten: 70% FIFA-Weltrangliste + 30% Gruppenphase-Performance ·
         Bracket-Struktur gemäß offizieller FIFA WM 2026 Regularien
       </p>

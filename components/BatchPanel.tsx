@@ -52,7 +52,6 @@ export default function BatchPanel({ games, oddsFormat }: Props) {
             className="absolute right-0 top-1/2 -translate-y-1/2 font-display text-[160px] leading-none select-none pointer-events-none"
             style={{ color: "rgba(212,168,83,0.03)" }}
           >
-            BATCH
           </span>
           <div
             className="grid gap-2.5"
