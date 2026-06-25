@@ -117,26 +117,32 @@ function GroupTable({ group, teams }: { group: string; teams: TeamStanding[] }) 
             </div>
 
             <span className="text-[11px] text-slate-500 text-center font-mono">{t.played}</span>
-            <span className="text-[11px] text-center font-mono text-emerald-500">{t.w.toFixed(1)}</span>
-            <span className="text-[11px] text-center font-mono text-slate-400">{t.d.toFixed(1)}</span>
-            <span className="text-[11px] text-center font-mono text-red-500">{t.l.toFixed(1)}</span>
+            <span className="text-[11px] text-center font-mono text-emerald-500">{t.isGroupFinished ? Math.round(t.w) : t.w.toFixed(1)}</span>
+            <span className="text-[11px] text-center font-mono text-slate-400">{t.isGroupFinished ? Math.round(t.d) : t.d.toFixed(1)}</span>
+            <span className="text-[11px] text-center font-mono text-red-500">{t.isGroupFinished ? Math.round(t.l) : t.l.toFixed(1)}</span>
             <span className="text-[11px] text-center font-mono text-slate-300">
-              {t.gf.toFixed(1)}:{t.ga.toFixed(1)}
+              {t.isGroupFinished ? Math.round(t.gf) : t.gf.toFixed(1)}:{t.isGroupFinished ? Math.round(t.ga) : t.ga.toFixed(1)}
             </span>
             <span
               className="text-[11px] text-center font-mono font-semibold"
               style={{ color: t.gd > 0 ? "#22c55e" : t.gd < 0 ? "#ef4444" : "#94a3b8" }}
             >
-              {t.gd > 0 ? "+" : ""}{t.gd.toFixed(1)}
+              {t.gd > 0 ? "+" : ""}{t.isGroupFinished ? Math.round(t.gd) : t.gd.toFixed(1)}
             </span>
             <span
               className="text-sm text-center font-mono font-bold"
               style={{ color: advancing ? "#f0c96e" : "#64748b" }}
             >
-              {t.pts.toFixed(1)}
+              {t.isGroupFinished ? Math.round(t.pts) : t.pts.toFixed(1)}
             </span>
 
-            <AdvanceBar prob={t.pAdvance} status={t.advanceStatus} />
+            {t.isGroupFinished ? (
+              <div className="flex justify-center">
+                <StatusBadge status={t.advanceStatus} />
+              </div>
+            ) : (
+              <AdvanceBar prob={t.pAdvance} status={t.advanceStatus} />
+            )}
           </div>
         );
       })}
@@ -229,18 +235,18 @@ function ThirdPlaceTable({ teams }: { teams: ThirdPlaceStanding[] }) {
                 <span className="text-xs font-medium text-amber-50 truncate">{t.team}</span>
               </div>
               <span className="text-sm text-center font-mono font-bold" style={{ color: t.advances ? "#22c55e" : "#64748b" }}>
-                {t.pts.toFixed(1)}
+                {t.isGroupFinished ? Math.round(t.pts) : t.pts.toFixed(1)}
               </span>
-              <span className="text-[11px] text-center font-mono text-emerald-500">{t.w.toFixed(1)}</span>
-              <span className="text-[11px] text-center font-mono text-slate-400">{t.d.toFixed(1)}</span>
+              <span className="text-[11px] text-center font-mono text-emerald-500">{t.isGroupFinished ? Math.round(t.w) : t.w.toFixed(1)}</span>
+              <span className="text-[11px] text-center font-mono text-slate-400">{t.isGroupFinished ? Math.round(t.d) : t.d.toFixed(1)}</span>
               <span className="text-[11px] text-center font-mono text-slate-300">
-                {t.gf.toFixed(1)}:{t.ga.toFixed(1)}
+                {t.isGroupFinished ? Math.round(t.gf) : t.gf.toFixed(1)}:{t.isGroupFinished ? Math.round(t.ga) : t.ga.toFixed(1)}
               </span>
               <span
                 className="text-[11px] text-center font-mono font-semibold"
                 style={{ color: t.gd > 0 ? "#22c55e" : t.gd < 0 ? "#ef4444" : "#94a3b8" }}
               >
-                {t.gd > 0 ? "+" : ""}{t.gd.toFixed(1)}
+                {t.gd > 0 ? "+" : ""}{t.isGroupFinished ? Math.round(t.gd) : t.gd.toFixed(1)}
               </span>
               <span className="text-[11px] text-center font-mono text-slate-500">
                 #{t.rank ?? "—"}

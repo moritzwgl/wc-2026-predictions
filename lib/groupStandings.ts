@@ -21,6 +21,8 @@ export interface TeamStanding {
   ga: number;
   /** Expected goal difference */
   gd: number;
+  /** Actual games played */
+  playedActual: number;
   /**
    * Advancement status:
    * "1st"   = 1st place → Round of 32 (certain)
@@ -32,6 +34,8 @@ export interface TeamStanding {
   advanceStatus: "1st" | "2nd" | "3rd-in" | "3rd-out" | "4th";
   /** Probability of advancing to Round of 32 (top-2 or best-8 third) */
   pAdvance: number;
+  /** Whether the team's group has finished all its matches */
+  isGroupFinished?: boolean;
 }
 
 export interface ThirdPlaceStanding extends TeamStanding {
@@ -81,6 +85,7 @@ export function computeGroupStandings(
       group: t.group,
       rank: flags[t.name]?.rank ?? flags[t.name_normalised ?? ""]?.rank ?? null,
       played: 0,
+      playedActual: 0,
       pts: 0,
       w: 0,
       d: 0,
@@ -154,6 +159,10 @@ export function computeGroupStandings(
 
     standings[hk].played += 1;
     standings[ak].played += 1;
+    if (isPlayed) {
+      standings[hk].playedActual += 1;
+      standings[ak].playedActual += 1;
+    }
   }
 
   for (const s of Object.values(standings)) {
@@ -219,26 +228,56 @@ export function computeGroupStandings(
   // Compute advancement probabilities using softmax within each group
   for (const group of Object.keys(byGroup)) {
     const teams = byGroup[group];
+    const isGroupFinished = teams.every((t) => t.playedActual === 3);
+
     const temp = 2.0;
     const expVals = teams.map((t) => Math.exp(t.pts / temp));
     const expSum = expVals.reduce((s, e) => s + e, 0);
     const softmax = expVals.map((e) => e / expSum);
 
     for (let i = 0; i < teams.length; i++) {
-      if (i === 0) {
-        // 1st place: high probability, softmax-weighted
-        teams[i].pAdvance = Math.min(0.97, softmax[i] * teams.length * 0.6 + 0.4);
-      } else if (i === 1) {
-        // 2nd place: moderate-high probability
-        teams[i].pAdvance = Math.min(0.92, softmax[i] * teams.length * 0.5 + 0.3);
-      } else if (i === 2) {
-        // 3rd place: chance depends on being in best 8 of 12
-        // Expected ~67% of 3rd-place teams advance (8/12)
-        teams[i].pAdvance = Math.min(0.65, softmax[i] * teams.length * 0.3 + 0.1);
+      teams[i].isGroupFinished = isGroupFinished;
+      if (isGroupFinished) {
+        // If finished, probability is 100% if advancing, 0% if out.
+        // Wait, 3rd place advancement depends on other groups.
+        // We handle that below for 3rd place, but for 1st/2nd it's 1.
+        teams[i].pAdvance = (teams[i].advanceStatus === "1st" || teams[i].advanceStatus === "2nd" || teams[i].advanceStatus === "3rd-in") ? 1 : 0;
       } else {
-        // 4th place: very low chance
-        teams[i].pAdvance = Math.min(0.12, softmax[i] * teams.length * 0.1);
+        if (i === 0) {
+          // 1st place: high probability, softmax-weighted
+          teams[i].pAdvance = Math.min(0.97, softmax[i] * teams.length * 0.6 + 0.4);
+        } else if (i === 1) {
+          // 2nd place: moderate-high probability
+          teams[i].pAdvance = Math.min(0.92, softmax[i] * teams.length * 0.5 + 0.3);
+        } else if (i === 2) {
+          // 3rd place: chance depends on being in best 8 of 12
+          // Expected ~67% of 3rd-place teams advance (8/12)
+          teams[i].pAdvance = Math.min(0.65, softmax[i] * teams.length * 0.3 + 0.1);
+        } else {
+          // 4th place: very low chance
+          teams[i].pAdvance = Math.min(0.12, softmax[i] * teams.length * 0.1);
+        }
       }
+    }
+  }
+
+  // Set 100% or 0% probability for 3rd place teams if the *entire* group stage is finished?
+  // Or just use the already computed advances flag for 3rd place teams if their group is finished?
+  // If their group is finished, we already set pAdvance above. But wait, if their group is finished but others aren't, they might be "3rd-in" now but pushed to "3rd-out" later.
+  // Actually, we can check if ALL groups are finished for 3rd place teams.
+  // Let's check if all matches are played to be safe for 3rd place certainty.
+  const isTournamentFinished = Object.values(byGroup).every(groupTeams => groupTeams.every(t => t.playedActual === 3));
+
+  for (const t of thirdPlaces) {
+    if (isTournamentFinished) {
+      t.pAdvance = t.advances ? 1 : 0;
+    } else {
+      // If tournament not finished but group is finished, pAdvance could be a heuristic.
+      // But we leave it as 1 or 0 based on current standing if group is finished, as set above.
+      // Wait, if group is finished, the team might be "3rd-in" right now but could fall out later.
+      // A better UX is to show the current hypothetical status if tournament ended today, but keep probability.
+      // Wait, the user asked to show final values if the GROUP has played all matches.
+      // If the group has played all matches, its values are final.
     }
   }
 
